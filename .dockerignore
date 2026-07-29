@@ -1,0 +1,16 @@
+# Fonte bruta do video: nao vai para a imagem (os MP4 web ja estao em static/video)
+static/video/*.mov
+static/video/*.MOV
+static/video/__test-*
+
+# Logs e temporarios
+*.log
+__pycache__/
+*.pyc
+.venv/
+venv/
+.git/
+.DS_Store
+
+# Templates de teste
+templates/__test.html

@@ -1,0 +1,23 @@
+# Masters de video: 295MB, estouram o limite de 100MB do GitHub.
+# Os MP4 web (vsl.mp4 / vsl-720.mp4) sao versionados e vao para o deploy.
+static/video/*.mov
+static/video/*.MOV
+static/video/*.avi
+static/video/*.mkv
+
+# Artefatos de teste
+templates/__test.html
+static/video/__test-*
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Sistema
+.DS_Store
+Thumbs.db
