@@ -808,6 +808,120 @@
       font-size: 1.08em;
     }
 
+    /* ============ CARROSSEL DE PROVAS ============ */
+    .proof-strip {
+      --fade: clamp(36px, 9vw, 160px);
+      position: relative;
+      z-index: 2;
+      margin-top: clamp(38px, 5vw, 56px);
+      overflow: hidden;
+      /* Degrade nas bordas: os cards nascem e somem no escuro */
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--fade),
+        #000 calc(100% - var(--fade)), transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0, #000 var(--fade),
+        #000 calc(100% - var(--fade)), transparent 100%);
+    }
+
+    .proof-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 58s linear infinite;
+      will-change: transform;
+    }
+
+    /* Para ao passar o mouse ou ao focar por teclado */
+    .proof-strip:hover .proof-track,
+    .proof-strip:focus-within .proof-track { animation-play-state: paused; }
+
+    /* -50% cai exatamente no inicio da copia porque a folga esta no
+       margin-right de cada card, e nao em gap (gap nao entra apos o ultimo). */
+    @keyframes marquee {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(-50%, 0, 0); }
+    }
+
+    .proof-card {
+      flex: 0 0 auto;
+      margin-right: 18px;
+      height: clamp(320px, 38vw, 450px);
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--ink-3);
+      cursor: zoom-in;
+      transition: transform 380ms var(--ease), border-color 380ms ease,
+                  box-shadow 380ms ease;
+    }
+
+    .proof-card img {
+      height: 100%;
+      width: auto;
+      max-width: none;
+      object-fit: cover;
+    }
+
+    .proof-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--line-strong);
+      box-shadow: 0 24px 54px rgba(0, 0, 0, 0.55);
+    }
+
+    .proof-note {
+      margin-top: 22px;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    /* ============ LIGHTBOX ============ */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(4, 4, 6, 0.93);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .lightbox[hidden] { display: none; }
+
+    .lightbox img {
+      max-width: min(430px, 92vw);
+      max-height: 92vh;
+      width: auto;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.7);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 200ms ease, border-color 200ms ease;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 59, 66, 0.26);
+      border-color: var(--line-strong);
+    }
+
     /* ============ CTA FINAL ============ */
     .final {
       position: relative;
@@ -895,6 +1009,10 @@
         transition-duration: 0.01ms !important;
       }
       .reveal { opacity: 1; transform: none; }
+
+      /* Sem a animacao o carrossel congelaria: vira rolagem manual */
+      .proof-strip { overflow-x: auto; }
+      .proof-track { width: auto; }
     }
 
     :focus-visible {
@@ -1054,6 +1172,87 @@
       </div>
     </section>
 
+    <!-- ===== PROVAS / DEPOIMENTOS ===== -->
+    <section class="section" id="depoimentos" aria-labelledby="depoimentos-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">Provas</span>
+          <h2 id="depoimentos-title">
+            Resultados de quem <em>já aplica o método</em>
+          </h2>
+          <p class="section-lead">
+            Prints de conversas e painéis de operações acompanhadas pela Delivery Elite.
+          </p>
+        </div>
+      </div>
+
+      <div class="proof-strip">
+        <div class="proof-track">
+          <!-- Primeira copia: a que os leitores de tela e o teclado acessam -->
+          <button class="proof-card" type="button" data-src="/static/img/prova-1.jpg">
+            <img src="/static/img/prova-1-thumb.jpg" width="440" height="956"
+                 decoding="async" fetchpriority="low"
+                 alt="Conversa no WhatsApp: mentorado envia o painel de vendas e o funil após quatro semanas de mentoria.">
+          </button>
+          <button class="proof-card" type="button" data-src="/static/img/prova-2.jpg">
+            <img src="/static/img/prova-2-thumb.jpg" width="440" height="978"
+                 decoding="async" fetchpriority="low"
+                 alt="Painel operacional do iFood com total de vendas, ticket médio e pedidos concluídos em alta.">
+          </button>
+          <button class="proof-card" type="button" data-src="/static/img/prova-3.jpg">
+            <img src="/static/img/prova-3-thumb.jpg" width="440" height="956"
+                 decoding="async" fetchpriority="low"
+                 alt="Conversa no WhatsApp: funil das duas semanas seguintes à mentoria, com crescimento.">
+          </button>
+          <button class="proof-card" type="button" data-src="/static/img/prova-4.jpg">
+            <img src="/static/img/prova-4-thumb.jpg" width="440" height="956"
+                 decoding="async" fetchpriority="low"
+                 alt="Conversa no WhatsApp: mentorado agradece em áudio e relata implementação fechada.">
+          </button>
+          <button class="proof-card" type="button" data-src="/static/img/prova-5.jpg">
+            <img src="/static/img/prova-5-thumb.jpg" width="440" height="956"
+                 decoding="async" fetchpriority="low"
+                 alt="Conversa no WhatsApp: mentorado mostra o funil da semana e pergunta sobre conversão para sacola.">
+          </button>
+          <button class="proof-card" type="button" data-src="/static/img/prova-6.jpg">
+            <img src="/static/img/prova-6-thumb.jpg" width="440" height="978"
+                 decoding="async" fetchpriority="low"
+                 alt="Lista de pedidos do portal do iFood com os pedidos concluídos do dia.">
+          </button>
+
+          <!-- Segunda copia: so para o loop visual, fora da navegacao -->
+          <button class="proof-card" type="button" tabindex="-1" aria-hidden="true" data-src="/static/img/prova-1.jpg">
+            <img src="/static/img/prova-1-thumb.jpg" width="440" height="956"
+                 decoding="async" fetchpriority="low" alt="">
+          </button>
+          <button class="proof-card" type="button" tabindex="-1" aria-hidden="true" data-src="/static/img/prova-2.jpg">
+            <img src="/static/img/prova-2-thumb.jpg" width="440" height="978"
+                 decoding="async" fetchpriority="low" alt="">
+          </button>
+          <button class="proof-card" type="button" tabindex="-1" aria-hidden="true" data-src="/static/img/prova-3.jpg">
+            <img src="/static/img/prova-3-thumb.jpg" width="440" height="956"
+                 decoding="async" fetchpriority="low" alt="">
+          </button>
+          <button class="proof-card" type="button" tabindex="-1" aria-hidden="true" data-src="/static/img/prova-4.jpg">
+            <img src="/static/img/prova-4-thumb.jpg" width="440" height="956"
+                 decoding="async" fetchpriority="low" alt="">
+          </button>
+          <button class="proof-card" type="button" tabindex="-1" aria-hidden="true" data-src="/static/img/prova-5.jpg">
+            <img src="/static/img/prova-5-thumb.jpg" width="440" height="956"
+                 decoding="async" fetchpriority="low" alt="">
+          </button>
+          <button class="proof-card" type="button" tabindex="-1" aria-hidden="true" data-src="/static/img/prova-6.jpg">
+            <img src="/static/img/prova-6-thumb.jpg" width="440" height="978"
+                 decoding="async" fetchpriority="low" alt="">
+          </button>
+        </div>
+      </div>
+
+      <div class="container">
+        <p class="proof-note">Toque em qualquer print para ampliar.</p>
+      </div>
+    </section>
+
     <!-- ===== PARCEIRO COMERCIAL ===== -->
     <section class="section" id="parceiro" aria-labelledby="parceiro-title">
       <div class="container">
@@ -1130,6 +1329,11 @@
 
   </main>
 
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Fechar">&times;</button>
+    <img id="lightboxImg" alt="">
+  </div>
+
   <footer>
     <div class="container footer-inner">
       <img src="/static/img/logo-mark.png" alt="Delivery Elite" width="600" height="454" loading="lazy">
@@ -1169,6 +1373,52 @@
     } catch (err) {
       showAll();
     }
+  })();
+
+  /* Lightbox das provas: o print em 200px nao se le, ampliar e o que
+     transforma a imagem em prova de verdade. */
+  (function () {
+    "use strict";
+
+    var box = document.getElementById("lightbox");
+    var img = document.getElementById("lightboxImg");
+    var closeBtn = document.getElementById("lightboxClose");
+    var cards = [].slice.call(document.querySelectorAll(".proof-card"));
+    if (!box || !img || !cards.length) return;
+
+    var lastFocus = null;
+
+    function open(src, alt) {
+      lastFocus = document.activeElement;
+      img.setAttribute("src", src);
+      img.setAttribute("alt", alt || "");
+      box.hidden = false;
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+      if (window.DE && window.DE.track) window.DE.track("proof_open", { proof_src: src });
+    }
+
+    function close() {
+      box.hidden = true;
+      img.removeAttribute("src");
+      document.body.style.overflow = "";
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener("click", function () {
+        var shot = card.querySelector("img");
+        open(card.getAttribute("data-src"), shot ? shot.getAttribute("alt") : "");
+      });
+    });
+
+    box.addEventListener("click", function (event) {
+      if (event.target === box || event.target === closeBtn) close();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !box.hidden) close();
+    });
   })();
 
   /* Luz que segue o cursor nos cards (apenas em ponteiro fino) */
