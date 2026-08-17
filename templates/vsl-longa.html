@@ -1563,10 +1563,30 @@
 
     /* Fail-safe: se o video nao carregar, libera o CTA em vez de travar
        o funil. Melhor vender sem o gate do que nao vender. */
-    video.addEventListener("error", function () {
+    function falhouOVideo(motivo) {
+      if (unlocked) return;
       unlock("video_error");
-      fire("video_error", { video_src: video.currentSrc || "desconhecido" });
+      fire("video_error", { erro: motivo, video_src: video.currentSrc || "desconhecido" });
+    }
+
+    /* O <video> so dispara 'error' quando tem src proprio. Com <source>
+       filhos, o erro vai para cada <source>: sem isto o fail-safe nunca
+       rodava e uma falha ao servir o MP4 travaria o CTA para sempre. */
+    video.addEventListener("error", function () { falhouOVideo("video"); });
+
+    [].slice.call(video.getElementsByTagName("source")).forEach(function (fonte) {
+      fonte.addEventListener("error", function () {
+        /* NETWORK_NO_SOURCE = acabaram as alternativas; uma fonte sozinha
+           falhando e normal quando a outra atende. */
+        if (video.networkState === 3) falhouOVideo("sem fonte utilizavel");
+      });
     });
+
+    /* Rede que engasga sem estourar erro: passou o tempo e nem metadata
+       veio, entao nao ha video para assistir. */
+    window.setTimeout(function () {
+      if (!unlocked && video.readyState === 0) falhouOVideo("timeout sem metadata");
+    }, 20000);
 
     video.addEventListener("volumechange", function () {
       player.classList.toggle("is-muted", video.muted || video.volume === 0);

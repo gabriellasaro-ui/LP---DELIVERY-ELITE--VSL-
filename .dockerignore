@@ -3,6 +3,10 @@ static/video/*.mov
 static/video/*.MOV
 static/video/__test-*
 
+# PNGs originais dos banners: a pagina serve os .webp
+static/img/banner pc.png
+static/img/banner mobile.png
+
 # Logs e temporarios
 *.log
 __pycache__/
