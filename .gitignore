@@ -10,6 +10,10 @@ static/video/*.mkv
 static/img/banner pc.png
 static/img/banner mobile.png
 
+# MP4 web: 232MB. O EasyPanel baixa o archive do GitHub a cada deploy e
+# estourava o timeout (~12s) baixando isso. Ficam num volume da VPS.
+static/video/*.mp4
+
 # Artefatos de teste
 templates/__test.html
 static/video/__test-*
