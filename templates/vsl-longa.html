@@ -1479,7 +1479,13 @@
     function unlock(source) {
       if (unlocked) return;
       unlocked = true;
-      try { window.localStorage.setItem(UNLOCK_KEY, "1"); } catch (err) {}
+
+      /* So grava quando a pessoa realmente assistiu. Liberacao por falha
+         do video e temporaria: se ficasse gravada, uma queda de alguns
+         minutos desativaria o gate para sempre naquele navegador. */
+      if (source === "gate" || source === "ended") {
+        try { window.localStorage.setItem(UNLOCK_KEY, "1"); } catch (err) {}
+      }
 
       ctas.forEach(function (cta) {
         cta.setAttribute("data-state", "unlocked");
