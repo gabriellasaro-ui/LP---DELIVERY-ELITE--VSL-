@@ -1076,8 +1076,9 @@
               disableremoteplayback
               oncontextmenu="return false;">
               <!-- Mobile recebe a versao leve (720p / 31MB); desktop a 1080p. -->
-              <source src="/static/video/vsl-720.mp4" type="video/mp4" media="(max-width: 860px)">
-              <source src="/static/video/vsl.mp4" type="video/mp4">
+              <!-- Uma fonte so, 720p: o player tem no maximo 950px de largura,
+                   e o 1080p dobrava o peso do deploy sem ganho visivel. -->
+              <source src="/static/video/vsl-web.mp4" type="video/mp4">
               Seu navegador não suporta a reprodução deste vídeo.
             </video>
 
