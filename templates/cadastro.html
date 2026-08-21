@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestão iFood - Diagnóstico Gratuito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#ea1d2c;
+    --red-dark:#c8151f;
+    --bg:#f4f4f4;
+    --text:#000000;
+    --gray:#8a8a8a;
+    --border:#d9d9d9;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;padding:0;height:100%;
+    background:var(--bg);
+    font-family:'ABeeZee', sans-serif;
+    color:var(--text);
+    overflow:hidden;
+  }
+  #progress-track{
+    position:fixed;top:0;left:0;width:100%;height:4px;
+    background:#e6e6e6;z-index:50;
+  }
+  #progress-bar{
+    height:100%;width:0%;background:var(--red);
+    transition:width .35s ease;
+  }
+  .step{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    display:flex;align-items:center;justify-content:center;
+    padding:40px 24px;
+    opacity:0;pointer-events:none;
+    transform:translateY(12px);
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .step.active{
+    opacity:1;pointer-events:auto;transform:translateY(0);
+  }
+  .step-inner{
+    max-width:720px;width:100%;
+  }
+  .required-mark{
+    color:var(--red);font-size:20px;margin-left:6px;
+  }
+  .headline{
+    font-size:34px;line-height:1.35;font-weight:400;margin:0 0 8px 0;
+  }
+  .headline b{font-weight:700;}
+  .bullets{
+    margin-top:22px;font-size:19px;line-height:1.9;font-weight:400;
+  }
+  .bullets div b{font-weight:700;}
+  .question-title{
+    font-size:30px;line-height:1.35;font-weight:400;margin-bottom:26px;
+    display:flex;align-items:flex-start;
+  }
+  .field{
+    width:100%;border:none;border-bottom:2px solid var(--border);
+    background:transparent;font-family:'ABeeZee',sans-serif;
+    font-size:22px;padding:8px 2px;outline:none;color:var(--text);
+  }
+  .field:focus{border-bottom-color:var(--red);}
+  .field::placeholder{color:#bdbdbd;}
+  .phone-row{display:flex;align-items:flex-end;gap:14px;}
+  .cc{
+    display:flex;align-items:center;gap:4px;font-size:20px;
+    border-bottom:2px solid var(--border);padding:8px 2px;color:var(--text);
+    white-space:nowrap;
+  }
+  .options{margin-top:6px;}
+  .option{
+    display:flex;align-items:center;gap:14px;
+    border:2px solid var(--border);border-radius:8px;
+    padding:14px 16px;margin-bottom:12px;cursor:pointer;
+    font-size:19px;transition:border-color .15s, background .15s;
+    background:#fff;
+  }
+  .option:hover{border-color:#bbb;background:#fafafa;}
+  .option.selected{
+    border-color:var(--text);background:#eaeaea;
+  }
+  .option .letter{
+    flex:0 0 auto;width:28px;height:28px;border-radius:5px;
+    background:#e2e2e2;color:var(--gray);
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;font-weight:700;
+  }
+  .option.selected .letter{background:var(--red);color:#fff;}
+  .btn{
+    background:var(--red);color:#fdfdfd;border:none;border-radius:4px;
+    font-family:'ABeeZee',sans-serif;font-size:20px;font-weight:700;
+    padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn:hover{background:var(--red-dark);}
+  .btn:disabled{background:#e39a9f;cursor:not-allowed;}
+  .btn-row{
+    margin-top:26px;display:flex;align-items:center;gap:14px;
+  }
+  .hint{color:var(--gray);font-size:14px;}
+  .hint b{
+    border:1px solid var(--border);border-radius:4px;padding:1px 7px;color:#555;
+  }
+  .nav-arrows{
+    position:fixed;bottom:26px;right:26px;display:flex;gap:8px;z-index:40;
+  }
+  .nav-arrows button{
+    width:38px;height:38px;border-radius:6px;border:none;
+    background:var(--red);color:#fff;font-size:16px;cursor:pointer;
+  }
+  .nav-arrows button:disabled{background:#f2b6bb;cursor:not-allowed;}
+  .error-msg{color:var(--red);font-size:14px;margin-top:10px;display:none;}
+  @media(max-width:640px){
+    .headline{font-size:24px;}
+    .question-title{font-size:22px;}
+    .bullets{font-size:16px;}
+    .field{font-size:18px;}
+    .nav-arrows{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-track"><div id="progress-bar"></div></div>
+<div id="steps-container"></div>
+
+<div class="nav-arrows">
+  <button id="prevBtn" title="Passo anterior">&#8249;</button>
+  <button id="nextBtn" title="Próxima etapa">&#8250;</button>
+</div>
+
+<script>
+/* =========================================================
+   CONFIGURAÇÃO DO FUNIL — edite aqui título, perguntas, opções
+   ========================================================= */
+const WHATSAPP_NUMBER = "551936287413"; // WABA oficial Eric Gestão Delivery Elite
+
+const steps = [
+  {
+    type: "welcome",
+    html: `<div class="headline">Muito prazer, meu nome é <b>Éric</b> e <b>juntos vamos transformar</b> sua loja do Ifood em uma <b>máquina de vendas!</b> 🚀</div>
+    <div class="bullets">
+      <div>🧠 Fazer o <b>algoritmo</b> do Ifood <b>trabalhar ao seu favor</b>.</div>
+      <div>🚀 Vamos <b>ampliar suas visualizações</b>.</div>
+      <div>📝 Criar um <b>cardápio lucrativo</b>.</div>
+      <div>💰 Fazer sua loja <b>faturar mais</b>!</div>
+      <div>👉 Esse produto é <b>exclusivo</b> para empresários na plataforma <b>Ifood</b>!</div>
+    </div>`,
+    buttonLabel: "Começar"
+  },
+  {
+    type: "text",
+    key: "nome",
+    question: "Como podemos te chamar? (Nome)",
+    placeholder: "Digite sua resposta aqui...",
+    required: true
+  },
+  {
+    type: "phone",
+    key: "whatsapp",
+    question: "Seu melhor WhatsApp: (Número)",
+    placeholder: "(11) 98765-4321",
+    required: true
+  },
+  {
+    type: "email",
+    key: "email",
+    question: "E-mail para enviarmos informações:",
+    placeholder: "nome@exemplo.com",
+    required: true
+  },
+  {
+    type: "text",
+    key: "papel",
+    question: "Qual é o seu papel no negócio? (Dono, Gerente, Outro)",
+    placeholder: "Digite sua resposta aqui...",
+    required: true
+  },
+  {
+    type: "choice",
+    key: "modelo",
+    question: "O que melhor define seu modelo?",
+    required: true,
+    options: ["Restaurante /Bar", "Delivery / Dark Kitchen", "Café / Doceria", "Franquia", "Outro"]
+  },
+  {
+    type: "choice",
+    key: "unidades",
+    question: "Quantas unidades você opera?",
+    required: true,
+    options: ["Apenas 1", "2 a 5", "6 a 10", "Mais de 10"]
+  },
+  {
+    type: "choice",
+    key: "faturamento",
+    question: "Qual a média de faturamento mensal hoje?",
+    required: true,
+    options: ["Até R$20 mil", "R$ 20 mil a R$ 50 mil", "R$ 50 mil a R$ 100 mil", "Acima de R$100 mil"]
+  },
+  {
+    type: "choice",
+    key: "faturamento_ifood",
+    question: "Qual a média de faturamento mensal no ifood hoje?",
+    required: true,
+    options: ["Até R$20 mil", "R$ 20 mil a R$ 50 mil", "R$ 50 mil a R$ 100 mil", "Acima de R$100 mil"]
+  },
+  {
+    type: "choice",
+    key: "canal",
+    question: "Onde o cliente compra mais hoje?",
+    required: true,
+    options: ["No local (salão)", "Ifood / Apps de Entrega", "WhatsApp / Site Próprio"]
+  },
+  {
+    type: "choice",
+    key: "dificuldade",
+    question: "Qual dessas dificuldades você mais enfrenta no seu negócio hoje?",
+    required: true,
+    options: [
+      "Estoque furado e desperdício",
+      "Não sobra dinheiro no fim do mês (Financeiro)",
+      "Minha equipe é desorganizada (Processos)",
+      "Quero crescer e abrir novas unidades"
+    ]
+  },
+  {
+    type: "choice",
+    key: "sistema",
+    question: "Você já tem algum sistema ou ajuda externa hoje?",
+    required: true,
+    options: ["Sim, já uso", "Não, faço tudo sozinho(a)"]
+  },
+  {
+    type: "ending",
+    html: `<div class="headline">Obrigado por preencher o formulário.<br>O mais breve possível a equipe do Gestão Ifood entrará em contato.</div>
+    <div class="bullets" style="margin-top:18px;">Caso queira entrar em contato conosco agora é só clicar no botão abaixo e nos chamar no WhatsApp.</div>`,
+    buttonLabel: "Enviar Mensagem"
+  }
+];
+
+/* ========================================================= */
+
+const answers = {};
+let current = 0;
+const container = document.getElementById("steps-container");
+const progressBar = document.getElementById("progress-bar");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+function letterFor(i){ return String.fromCharCode(65 + i); }
+
+function renderStep(index){
+  container.innerHTML = "";
+  const s = steps[index];
+  const wrap = document.createElement("div");
+  wrap.className = "step active";
+
+  let inner = `<div class="step-inner">`;
+
+  if(s.type === "welcome" || s.type === "ending"){
+    inner += s.html;
+    inner += `<div class="btn-row">
+      <button class="btn" id="mainBtn">${s.buttonLabel}</button>
+      <span class="hint">Pressione <b>Enter</b> &#8629;</span>
+    </div>`;
+  } else {
+    inner += `<div class="question-title">${s.question}${s.required ? '<span class="required-mark">*</span>' : ''}</div>`;
+
+    if(s.type === "text" || s.type === "email"){
+      inner += `<input class="field" id="fieldInput" type="${s.type === 'email' ? 'email' : 'text'}" placeholder="${s.placeholder}" value="${answers[s.key] || ''}">`;
+    }
+
+    if(s.type === "phone"){
+      inner += `<div class="phone-row">
+        <div class="cc">🇧🇷 +55</div>
+        <input class="field" id="fieldInput" type="tel" placeholder="${s.placeholder}" value="${answers[s.key] || ''}">
+      </div>`;
+    }
+
+    if(s.type === "choice"){
+      inner += `<div class="options">`;
+      s.options.forEach((opt, i) => {
+        const selected = answers[s.key] === opt ? "selected" : "";
+        inner += `<div class="option ${selected}" data-value="${opt}" data-index="${i}">
+          <div class="letter">${letterFor(i)}</div>
+          <div>${opt}</div>
+        </div>`;
+      });
+      inner += `</div>`;
+    }
+
+    inner += `<div class="error-msg" id="errorMsg">Esta etapa é necessária</div>`;
+    inner += `<div class="btn-row">
+      <button class="btn" id="mainBtn">OK</button>
+      <span class="hint">Pressione <b>Enter</b> &#8629;</span>
+    </div>`;
+  }
+
+  inner += `</div>`;
+  wrap.innerHTML = inner;
+  container.appendChild(wrap);
+
+  updateProgress();
+  updateNavButtons();
+
+  const mainBtn = document.getElementById("mainBtn");
+  mainBtn.addEventListener("click", () => advance());
+
+  const fieldInput = document.getElementById("fieldInput");
+  if(fieldInput){
+    fieldInput.focus();
+    fieldInput.addEventListener("input", () => { answers[s.key] = fieldInput.value; });
+  }
+
+  const options = wrap.querySelectorAll(".option");
+  options.forEach(opt => {
+    opt.addEventListener("click", () => selectOption(s, opt, options));
+  });
+}
+
+function selectOption(step, optEl, allOpts){
+  allOpts.forEach(o => o.classList.remove("selected"));
+  optEl.classList.add("selected");
+  answers[step.key] = optEl.dataset.value;
+}
+
+function validateCurrent(){
+  const s = steps[current];
+  if(s.type === "welcome" || s.type === "ending") return true;
+  if(!s.required) return true;
+  const val = answers[s.key];
+  const ok = val && val.toString().trim().length > 0;
+  const errEl = document.getElementById("errorMsg");
+  if(errEl) errEl.style.display = ok ? "none" : "block";
+  return ok;
+}
+
+function advance(){
+  const s = steps[current];
+  if(s.type !== "welcome" && s.type !== "ending"){
+    const fieldInput = document.getElementById("fieldInput");
+    if(fieldInput) answers[s.key] = fieldInput.value;
+  }
+
+  if(s.type === "ending"){
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}`, "_blank");
+    return;
+  }
+
+  if(!validateCurrent()) return;
+
+  if(current < steps.length - 1){
+    current++;
+    renderStep(current);
+  }
+}
+
+function goBack(){
+  if(current > 0){
+    current--;
+    renderStep(current);
+  }
+}
+
+function updateProgress(){
+  const pct = Math.round((current / (steps.length - 1)) * 100);
+  progressBar.style.width = pct + "%";
+}
+
+function updateNavButtons(){
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === steps.length - 1;
+}
+
+prevBtn.addEventListener("click", goBack);
+nextBtn.addEventListener("click", () => { if(validateCurrent()) advance(); });
+
+document.addEventListener("keydown", (e) => {
+  const s = steps[current];
+
+  if(e.key === "Enter"){
+    e.preventDefault();
+    advance();
+    return;
+  }
+
+  if(s.type === "choice"){
+    const letter = e.key.toUpperCase();
+    const idx = letter.charCodeAt(0) - 65;
+    if(idx >= 0 && idx < s.options.length){
+      const optEls = document.querySelectorAll(".option");
+      selectOption(s, optEls[idx], optEls);
+    }
+  }
+});
+
+renderStep(current);
+</script>
+</body>
+</html>
