@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Análise de Loja Gravada – Gestão iFood</title>
+  <meta name="description" content="Receba uma análise gravada e personalizada da sua loja no iFood, com um diagnóstico claro e um plano prático para vender mais.">
+  <meta property="og:title" content="Análise de Loja Gravada – Gestão iFood">
+  <meta property="og:description" content="Descubra o que está travando suas vendas no iFood com uma análise gravada e personalizada da sua loja.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ url_for('static', filename='img/logo.jpeg') }}">
+  <meta name="theme-color" content="#41000b">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="{{ url_for('static', filename='img/logo-mark.png') }}" type="image/png">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WG68M2TS');</script>
+  <!-- End Google Tag Manager -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="{{ url_for('static', filename='tracking.js') }}"></script>
+  <style>
+    :root { --red:#ec0920; --red-dark:#a90518; --red-deep:#41000b; --ink:#171116; --muted:#6c6265; --paper:#fffdfd; --line:#eadfe1; --green:#07895a; --shadow:0 22px 65px rgba(49,0,8,.12); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:'DM Sans',Arial,sans-serif; overflow-x:hidden; }
+    a { color:inherit; }
+    img { display:block; max-width:100%; }
+    .wrap { width:min(1160px, calc(100% - 40px)); margin:0 auto; }
+    .eyebrow { display:flex; align-items:center; gap:10px; margin:0 0 18px; color:var(--red); font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+    .eyebrow::before { content:''; width:30px; height:3px; border-radius:10px; background:currentColor; }
+    .section-title { max-width:680px; margin:0; font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(32px,4vw,58px); line-height:.98; letter-spacing:-.055em; }
+    .section-title em { color:var(--red); font-style:normal; }
+    .section-lead { max-width:680px; margin:20px 0 0; color:var(--muted); font-size:18px; line-height:1.65; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:56px; padding:0 27px; border:1px solid transparent; border-radius:99px; background:var(--red); color:#fff; font-size:15px; font-weight:700; text-decoration:none; box-shadow:0 12px 30px rgba(236,9,32,.25); transition:transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .btn svg, .nav-link svg { flex:none; }
+    .btn:hover { background:#c9071c; box-shadow:0 16px 35px rgba(236,9,32,.32); transform:translateY(-2px); }
+    .btn--light { background:#fff; color:var(--red); box-shadow:0 14px 30px rgba(0,0,0,.16); }
+    .btn--light:hover { background:#fff4f5; }
+    .hero { position:relative; min-height:740px; overflow:hidden; background:var(--red-deep); color:#fff; isolation:isolate; }
+    .hero::after { content:''; position:absolute; inset:0; z-index:-1; background:transparent; pointer-events:none; }
+    .hero-art { position:absolute; z-index:-2; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+    .hero-nav { position:relative; z-index:2; display:flex; justify-content:space-between; align-items:center; padding:28px 0; }
+    .brand { font-family:'Space Grotesk',Arial,sans-serif; font-size:22px; font-weight:700; letter-spacing:-.06em; }
+    .brand span { color:#ffbbc2; }
+    .nav-link { display:inline-flex; align-items:center; gap:7px; color:#fff; font-size:13px; font-weight:700; text-decoration:none; }
+    .hero-content { position:relative; z-index:1; display:flex; min-height:625px; align-items:center; padding:28px 0 90px; }
+    .hero-copy { width:min(560px,55%); }
+    .hero-kicker { display:inline-flex; align-items:center; gap:8px; margin-bottom:22px; padding:8px 12px; border:1px solid rgba(255,255,255,.27); border-radius:99px; background:rgba(86,0,12,.28); color:#ffdfe3; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .hero-kicker::before { content:'●'; color:#ffb1b9; font-size:11px; }
+    h1 { max-width:660px; margin:0; font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(42px,5.5vw,78px); line-height:.94; letter-spacing:-.065em; }
+    h1 span { color:#ffbdc3; }
+    .hero-copy p { max-width:490px; margin:27px 0 30px; color:#ffe9eb; font-size:18px; line-height:1.6; }
+    .hero-note { display:flex; align-items:center; gap:10px; margin-top:15px; color:#ffd4d8; font-size:12px; }
+    .hero-note svg { flex:none; }
+    .intro { padding:115px 0 120px; background:#fff; }
+    .intro-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(40px,8vw,120px); align-items:start; }
+    .intro-side { padding-top:35px; }
+    .intro-side p { margin:0; color:var(--muted); font-size:17px; line-height:1.65; }
+    .audience-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; margin-top:50px; border:1px solid var(--line); background:var(--line); }
+    .audience-item { min-height:160px; padding:28px; background:#fff; }
+    .audience-item strong { display:block; margin-bottom:11px; font-family:'Space Grotesk',Arial,sans-serif; font-size:20px; letter-spacing:-.03em; }
+    .audience-item p { margin:0; color:var(--muted); font-size:15px; line-height:1.55; }
+    .audience-item b { color:var(--red); }
+    .help { padding:110px 0; background:var(--red); color:#fff; }
+    .help .eyebrow { color:#ffb8c0; }
+    .help .section-title { max-width:760px; }
+    .help .section-lead { color:#ffe4e7; }
+    .help-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:55px; }
+    .help-card { min-height:216px; padding:30px; border:1px solid rgba(255,255,255,.25); background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.04)); }
+    .help-card:nth-child(even) { transform:translateY(24px); background:#fff; color:var(--ink); }
+    .help-card:nth-child(even) p { color:var(--muted); }
+    .help-number { display:block; margin-bottom:32px; color:#ffbdc3; font-family:'Space Grotesk',Arial,sans-serif; font-size:14px; font-weight:700; letter-spacing:.08em; }
+    .help-card:nth-child(even) .help-number { color:var(--red); }
+    .help-card h3 { margin:0 0 10px; font-family:'Space Grotesk',Arial,sans-serif; font-size:23px; letter-spacing:-.04em; }
+    .help-card p { margin:0; color:#ffe4e7; font-size:15px; line-height:1.55; }
+    .results { padding:130px 0 120px; background:#f8f2f3; }
+    .results-head { display:flex; justify-content:space-between; gap:30px; align-items:end; }
+    .results-head .section-lead { margin:0; max-width:330px; font-size:15px; }
+    .results-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:55px; }
+    .result-card { padding:9px; background:#fff; box-shadow:0 10px 25px rgba(65,0,11,.06); }
+    .result-card img { width:100%; aspect-ratio:1/1; object-fit:cover; }
+    .live { padding:120px 0; background:#fff; }
+    .live-head { display:flex; justify-content:space-between; align-items:end; gap:30px; }
+    .live-head .section-lead { margin:0; max-width:380px; font-size:15px; }
+    .lesson-list { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:55px; border-top:1px solid var(--line); }
+    .lesson { position:relative; min-height:240px; padding:28px 24px 25px 0; border-bottom:1px solid var(--line); }
+    .lesson:nth-child(3n+2), .lesson:nth-child(3n+3) { padding-left:24px; border-left:1px solid var(--line); }
+    .lesson-number { color:var(--red); font-family:'Space Grotesk',Arial,sans-serif; font-size:32px; font-weight:700; letter-spacing:-.06em; }
+    .lesson h3 { margin:28px 0 10px; font-family:'Space Grotesk',Arial,sans-serif; font-size:20px; letter-spacing:-.03em; }
+    .lesson p { margin:0; color:var(--muted); font-size:14px; line-height:1.55; }
+    .mentor { padding:115px 0; background:#150105; color:#fff; }
+    .mentor-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(40px,8vw,130px); align-items:center; }
+    .mentor-photo { position:relative; padding:11px; background:linear-gradient(135deg,var(--red),#ffb8bd); }
+    .mentor-photo img { width:100%; aspect-ratio:1/1.08; object-fit:cover; object-position:center; filter:saturate(.92); }
+    .mentor-photo::after { content:'Eric Rodrigues'; position:absolute; right:-18px; bottom:28px; padding:12px 15px; background:#fff; color:var(--red); font-size:12px; font-weight:700; }
+    .mentor .eyebrow { color:#ffb8c0; }
+    .mentor .section-title { max-width:540px; }
+    .mentor-copy p { color:#f1dfe1; font-size:16px; line-height:1.7; }
+    .mentor-copy p:first-of-type { font-size:20px; color:#fff; }
+    .offer { position:relative; padding:120px 0 130px; background:linear-gradient(135deg,#f8f2f3 0%,#fff 50%,#ffe8eb 100%); overflow:hidden; }
+    .offer::before { content:'OFERTA'; position:absolute; top:30px; right:-20px; color:rgba(236,9,32,.055); font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(130px,22vw,320px); font-weight:700; letter-spacing:-.1em; line-height:1; pointer-events:none; }
+    .offer-intro { text-align:center; }
+    .offer-intro .eyebrow { justify-content:center; }
+    .offer-intro .section-title { margin:0 auto; }
+    .offer-intro .section-lead { margin:18px auto 0; font-size:17px; }
+    .offer-card { position:relative; display:grid; grid-template-columns:1.05fr .95fr; max-width:900px; margin:54px auto 0; overflow:hidden; border-radius:24px; background:#fff; box-shadow:0 30px 80px rgba(116,0,17,.18); }
+    .offer-main { padding:45px 48px; background:#fff; }
+    .offer-label { display:inline-block; margin-bottom:20px; padding:7px 10px; border-radius:5px; background:#ffe1e4; color:var(--red); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    .offer-main h3 { max-width:360px; margin:0; font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(28px,4vw,45px); line-height:1; letter-spacing:-.06em; }
+    .offer-list { display:grid; gap:15px; margin:34px 0 0; padding:0; list-style:none; }
+    .offer-list li { display:flex; gap:11px; align-items:flex-start; font-size:14px; line-height:1.4; }
+    .offer-list svg { flex:none; margin-top:2px; color:var(--red); }
+    .offer-price { display:flex; flex-direction:column; justify-content:center; padding:45px 42px; background:var(--red); color:#fff; }
+    .offer-price small { color:#ffd8dc; font-size:13px; font-weight:600; }
+    .installment { margin:12px 0 0; font-family:'Space Grotesk',Arial,sans-serif; font-size:22px; letter-spacing:-.03em; }
+    .installment strong { display:block; margin-top:2px; font-size:58px; line-height:.9; letter-spacing:-.08em; }
+    .cash { margin:17px 0 0; color:#fff0f1; font-size:14px; }
+    .offer-price .btn { width:100%; margin-top:28px; }
+    .offer-security { display:flex; gap:8px; align-items:center; margin-top:15px; color:#ffd8dc; font-size:11px; line-height:1.4; }
+    .faq { padding:110px 0; background:#fff; }
+    .faq-grid { display:grid; grid-template-columns:.75fr 1.25fr; gap:clamp(50px,10vw,140px); }
+    .faq-list { border-top:1px solid var(--line); }
+    details { border-bottom:1px solid var(--line); }
+    summary { display:flex; justify-content:space-between; gap:25px; padding:23px 0; cursor:pointer; list-style:none; font-family:'Space Grotesk',Arial,sans-serif; font-size:18px; font-weight:600; letter-spacing:-.03em; }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:'+'; color:var(--red); font-size:25px; font-weight:400; }
+    details[open] summary::after { content:'−'; }
+    details p { max-width:630px; margin:0 40px 23px 0; color:var(--muted); font-size:15px; line-height:1.6; }
+    footer { padding:28px 0; background:#170105; color:#d6bec1; font-size:11px; letter-spacing:.14em; text-align:center; text-transform:uppercase; }
+    @media (max-width:900px) {
+      .hero { min-height:760px; }
+      .hero-copy { width:60%; }
+      .hero-art { object-position:58% center; }
+      .intro-grid, .mentor-grid, .faq-grid { grid-template-columns:1fr; }
+      .intro-side { padding-top:0; }
+      .results-grid { grid-template-columns:repeat(2,1fr); }
+      .lesson-list { grid-template-columns:repeat(2,1fr); }
+      .lesson:nth-child(3n+2), .lesson:nth-child(3n+3) { padding-left:0; border-left:0; }
+      .lesson:nth-child(even) { padding-left:24px; border-left:1px solid var(--line); }
+      .offer-card { grid-template-columns:1fr; max-width:600px; }
+      .offer-price { padding:40px 48px; }
+    }
+    @media (max-width:620px) {
+      .wrap { width:min(100% - 32px, 520px); }
+      .hero { min-height:860px; }
+      .hero::after { background:transparent; }
+      .hero-art { object-position:center bottom; object-fit:cover; }
+      .hero-nav { padding-top:20px; }
+      .nav-link { display:none; }
+      .hero-content { min-height:750px; align-items:flex-start; padding-top:38px; }
+      .hero-copy { width:100%; }
+      h1 { max-width:390px; font-size:48px; }
+      .hero-copy p { max-width:330px; font-size:16px; }
+      .intro, .help, .results, .live, .mentor, .offer, .faq { padding:80px 0; }
+      .intro-grid { gap:35px; }
+      .audience-grid, .help-grid, .lesson-list { grid-template-columns:1fr; }
+      .audience-item { min-height:0; padding:24px; }
+      .help-card, .help-card:nth-child(even) { min-height:0; transform:none; padding:25px; }
+      .help-number { margin-bottom:25px; }
+      .results-head, .live-head { display:block; }
+      .results-head .section-lead, .live-head .section-lead { margin-top:18px; }
+      .results-grid { grid-template-columns:repeat(2,1fr); gap:9px; margin-top:35px; }
+      .lesson, .lesson:nth-child(even) { min-height:0; padding:25px 0; border-left:0; }
+      .lesson h3 { margin-top:20px; }
+      .mentor-grid { gap:45px; }
+      .mentor-copy p:first-of-type { font-size:18px; }
+      .offer-card { margin-top:35px; border-radius:18px; }
+      .offer-main { padding:32px 25px; }
+      .offer-price { padding:32px 25px; }
+      .installment strong { font-size:52px; }
+      .faq-grid { gap:45px; }
+      summary { font-size:16px; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+
+    /* Refinamento de composição: escala, respiro e contraste da oferta. */
+    .hero { width:100%; height:min(56.25vw,900px); min-height:0; aspect-ratio:auto; background:var(--red-deep); }
+    .hero::after { background:transparent; }
+    .hero-art { object-fit:cover; object-position:center; background:none; }
+    .hero .wrap { position:relative; width:min(1500px,calc(100% - 160px)); height:100%; }
+    .hero-nav { position:absolute; inset:0 0 auto; }
+    .hero-content { height:100%; min-height:0; align-items:center; padding:72px 0 30px; }
+    .hero-copy { width:min(620px,50%); transform:none; }
+    h1 { max-width:620px; font-size:clamp(46px,4.2vw,64px); line-height:.98; letter-spacing:-.05em; }
+    .hero-copy p { max-width:540px; }
+
+    .intro-side { display:flex; flex-direction:column; align-items:flex-start; padding-top:20px; }
+    .intro-side > p { max-width:570px; }
+    .audience-grid { width:100%; margin-top:34px; }
+    .intro-side > .btn { margin-top:38px; align-self:flex-start; }
+
+    .results { padding:100px 0 100px; background:#fafafa; text-align:center; }
+    .results-head { display:block; }
+    .results-head .eyebrow { justify-content:center; }
+    .results-head .section-title { max-width:none; margin:0 auto; font-size:clamp(30px,3.2vw,44px); letter-spacing:-.045em; }
+    .results-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; max-width:1160px; margin:54px auto 0; }
+    .result-card { margin:0; padding:10px; border:0; border-radius:16px; background:#fff; box-shadow:0 12px 30px rgba(65,0,11,.08); overflow:hidden; }
+    .result-card img { aspect-ratio:1170/983; object-fit:cover; border-radius:10px; }
+    .result-card:last-child { grid-column:auto; }
+    .results > .wrap > .btn { display:inline-flex; width:auto; margin:42px auto 0 !important; border-radius:4px; box-shadow:none; }
+    .btn--animated { animation:cta-pulse 2.4s ease-in-out infinite; }
+    @keyframes cta-pulse { 0%,100% { transform:translateY(0); box-shadow:0 12px 30px rgba(236,9,32,.24); } 50% { transform:translateY(-3px); box-shadow:0 18px 40px rgba(236,9,32,.38); } }
+
+    .help .section-title em { color:#ffd1d6; }
+    .help-intro { display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(45px,8vw,120px); align-items:start; margin-top:28px; }
+    .help-copy .section-lead { max-width:650px; margin:0 0 18px; font-size:16px; line-height:1.55; }
+    .help-copy .btn { margin-top:18px !important; }
+
+    .mentor { padding:125px 0; background:#fff; color:var(--ink); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .mentor-grid { grid-template-columns:minmax(420px,.95fr) 1.05fr; gap:clamp(50px,7vw,110px); }
+    .mentor-photo { padding:14px; box-shadow:0 24px 55px rgba(236,9,32,.16); }
+    .mentor-photo img { aspect-ratio:1/1.12; }
+    .mentor .eyebrow { color:var(--red); }
+    .mentor-copy p { color:var(--muted); }
+    .mentor-copy p:first-of-type { color:var(--ink); }
+    .mentor .btn--light { background:var(--red); color:#fff; }
+    .mentor .btn--light:hover { background:#c9071c; }
+
+    .offer-card { grid-template-columns:1.08fr .92fr; max-width:1000px; }
+    .offer-main { padding:52px 56px; }
+    .offer-price { min-height:430px; padding:52px 52px; border-left:8px solid #fff; }
+    .installment { margin-top:20px; }
+    .price-prefix { display:block; font-size:24px; line-height:1; }
+    .price-value { display:flex; align-items:flex-start; gap:10px; margin-top:8px; }
+    .price-value .currency { margin-top:10px; padding:7px 9px; border-radius:6px; background:#fff; color:var(--red); font-size:23px; font-weight:700; letter-spacing:-.04em; }
+    .price-value strong { display:block; margin:0; font-family:Arial,Helvetica,sans-serif; font-size:76px; font-weight:800; line-height:.9; letter-spacing:0; font-variant-numeric:tabular-nums; white-space:nowrap; }
+
+    .hero-marquee { display:block; width:100%; overflow:hidden; background:#fff; color:var(--red); font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+    .hero-marquee-track { display:flex; width:max-content; padding:15px 0; animation:hero-marquee-move 26s linear infinite; }
+    .hero-marquee span { padding:0 24px; }
+    @keyframes hero-marquee-move { to { transform:translateX(-50%); } }
+
+    footer { background:#130106; border-top:4px solid var(--red); }
+    .footer-inner { width:min(1160px,calc(100% - 40px)); min-height:92px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:22px; color:#f9e7e9; font-size:11px; letter-spacing:.12em; text-align:left; }
+    .footer-inner strong { color:#fff; font-family:'Space Grotesk',Arial,sans-serif; font-size:15px; letter-spacing:-.04em; text-transform:none; }
+    .footer-inner strong span { color:#ff9ca6; }
+    .footer-credit { color:#d3aeb3; text-transform:none; letter-spacing:0; }
+
+    @media (max-width:900px) {
+      .hero { width:100%; height:min(56.25vw,900px); min-height:0; aspect-ratio:auto; }
+      .hero-content { height:100%; min-height:0; padding:70px 0 24px; }
+      .hero-copy { width:min(650px,78%); }
+      .hero-copy { transform:none; }
+      .hero-art { object-fit:cover; object-position:center; }
+      .hero .wrap { width:min(1180px,calc(100% - 40px)); }
+      .results-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+      .help-intro { grid-template-columns:1fr; gap:28px; }
+      .mentor-grid { grid-template-columns:1fr; }
+      .mentor-photo { max-width:560px; }
+      .offer-price { border-left:0; border-top:8px solid #fff; }
+    }
+
+    @media (max-width:620px) {
+      .hero { width:100%; height:auto; min-height:0; aspect-ratio:9/16; background:var(--red-deep); }
+      .hero::after { background:transparent; }
+      .hero-art { object-fit:cover; object-position:center; }
+      .hero-content { height:100%; min-height:0; align-items:flex-end; padding:0 0 34px; }
+      .hero-copy { display:flex; width:100%; max-width:330px; margin:0 auto; flex-direction:column; align-items:center; text-align:center; }
+      .hero .wrap { width:calc(100% - 32px); }
+      h1 { max-width:290px; font-size:29px; line-height:1.04; letter-spacing:-.035em; }
+      .hero-copy p { max-width:285px; margin:15px auto 19px; font-size:13px; line-height:1.45; }
+      .hero-note { justify-content:center; margin-top:13px; font-size:11px; text-align:center; }
+      .results-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+      .result-card:last-child { grid-column:auto; }
+      .mentor { padding:90px 0; }
+      .mentor-grid { gap:45px; }
+      /* No mobile a foto ocupa a largura toda: o selo pendurado em
+         right:-18px empurrava a pagina e criava rolagem horizontal. */
+      .mentor-photo::after { right:0; }
+      .offer-card { grid-template-columns:1fr; }
+      .offer-price { min-height:0; padding:38px 28px; }
+      .price-value strong { font-size:62px; }
+      .footer-inner { min-height:120px; flex-direction:column; justify-content:center; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG68M2TS"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header class="hero" id="top">
+    <picture>
+      <source media="(max-width: 620px)" srcset="{{ url_for('static', filename='img/banner-mobile.webp') }}" width="941" height="1672">
+      <img class="hero-art" src="{{ url_for('static', filename='img/banner-pc.webp') }}" width="1672" height="941" alt="Especialista acompanhando resultados de vendas no iFood" fetchpriority="high">
+    </picture>
+    <div class="wrap">
+      <nav class="hero-nav" aria-label="Navegação principal">
+        <a class="nav-link" href="#compra">Quero minha análise <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </nav>
+      <div class="hero-content">
+        <div class="hero-copy">
+          <h1>Análise gravada da sua loja no <span>iFood</span>: descubra o que está travando suas vendas.</h1>
+          <p>Receba um diagnóstico completo e personalizado, mostrando o que precisa ser ajustado no cardápio, nas promoções e na operação para sua loja vender mais.</p>
+          <a class="btn btn--animated btn--light" href="#compra" data-cta="hero" onclick="trackCTA('hero')">Quero analisar minha loja <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="hero-note"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5 13 3v3.75c0 3.2-2.1 6.1-5 7.75-2.9-1.65-5-4.55-5-7.75V3l5-1.5Z" stroke="currentColor" stroke-width="1.2"/><path d="m5.4 8 1.65 1.65L10.8 5.9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Diagnóstico gravado e personalizado para a sua loja</div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="hero-marquee" aria-label="Aumente suas vendas no iFood">
+    <div class="hero-marquee-track">
+      <span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span>
+    </div>
+  </div>
+
+  <main>
+    <section class="intro" id="para-quem">
+      <div class="wrap">
+        <div class="intro-grid">
+          <div>
+            <p class="eyebrow">PARA QUEM É?</p>
+            <h2 class="section-title">Este produto é <em>perfeito</em> para:</h2>
+          </div>
+          <div class="intro-side">
+            <p>Donos de restaurantes e bares que querem lucrar mais no iFood.</p>
+            <div class="audience-grid">
+              <article class="audience-item"><strong>01</strong><p>Donos de restaurantes e bares que querem <b>lucrar mais</b> no iFood.</p></article>
+              <article class="audience-item"><strong>02</strong><p>Chefs e cozinheiros que desejam <b>atrair mais clientes</b> para sua loja.</p></article>
+              <article class="audience-item"><strong>03</strong><p>Empreendedores que buscam <b>entender o algoritmo</b> do iFood.</p></article>
+              <article class="audience-item"><strong>04</strong><p>Quem está começando e quer <b>evitar erros</b> para crescer rápido.</p></article>
+            </div>
+            <a class="btn btn--animated" href="#compra" data-cta="audience" onclick="trackCTA('audience')">Quero meu diagnóstico <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="help" id="como-ajuda">
+      <div class="wrap">
+        <p class="eyebrow">COMO VAI TE AJUDAR?</p>
+        <div class="help-intro">
+          <h2 class="section-title">Atraia mais pedidos e <em>domine de uma vez</em> o iFood.</h2>
+          <div class="help-copy">
+            <p class="section-lead">Sua loja será avaliada para identificar oportunidades na precificação, nas fotos, nas descrições e na organização do cardápio. Você verá com clareza quais pontos podem estar afastando pedidos e reduzindo sua margem.</p>
+            <p class="section-lead">Você também receberá recomendações práticas sobre promoções, posicionamento nas buscas, tempo de entrega e experiência do cliente. Um caminho direto para corrigir gargalos e transformar sua loja em uma referência no iFood.</p>
+            <a class="btn btn--animated btn--light" href="#compra" data-cta="help" onclick="trackCTA('help')">Quero analisar minha loja <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="results" id="resultados">
+      <div class="wrap">
+        <div class="results-head"><div><p class="eyebrow">RESULTADOS</p><h2 class="section-title">Veja você mesmo o resultado de alguns alunos</h2></div></div>
+        <div class="results-grid">
+          <figure class="result-card"><img src="{{ url_for('static', filename='img/resultado-01.webp') }}" alt="Resultado de vendas de aluno no iFood" loading="lazy"></figure>
+          <figure class="result-card"><img src="{{ url_for('static', filename='img/resultado-04.webp') }}" alt="Resultado de vendas de aluno no iFood" loading="lazy"></figure>
+          <figure class="result-card"><img src="{{ url_for('static', filename='img/resultado-03.webp') }}" alt="Resultado de vendas de aluno no iFood" loading="lazy"></figure>
+          <figure class="result-card"><img src="{{ url_for('static', filename='img/resultado-02.webp') }}" alt="Resultado de vendas de aluno no iFood" loading="lazy"></figure>
+        </div>
+        <a class="btn btn--animated" href="#compra" data-cta="results" onclick="trackCTA('results')" style="margin-top:42px">Quero meu diagnóstico <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </section>
+
+    <section class="live" id="analise">
+      <div class="wrap">
+        <div class="live-head"><div><p class="eyebrow">ANÁLISE GRAVADA</p><h2 class="section-title">O que será analisado na sua loja?</h2></div><p class="section-lead">Um diagnóstico completo, gravado e personalizado para a sua operação.</p></div>
+        <div class="lesson-list">
+          <article class="lesson"><div class="lesson-number">01</div><h3>Precificação Estratégica</h3><p>Descubra como definir os preços certos para maximizar os lucros e manter os clientes.</p></article>
+          <article class="lesson"><div class="lesson-number">02</div><h3>Cardápio que Converte</h3><p>Avaliação do layout, das fotos, das descrições e da organização dos produtos para otimizar sua oferta.</p></article>
+          <article class="lesson"><div class="lesson-number">03</div><h3>Visibilidade nas Buscas</h3><p>O que pode ajudar sua loja a ganhar posições e aparecer com mais frequência nas pesquisas do iFood.</p></article>
+          <article class="lesson"><div class="lesson-number">04</div><h3>Algoritmo do iFood</h3><p>Entenda os sinais que a plataforma prioriza e como melhorar o desempenho da sua loja.</p></article>
+          <article class="lesson"><div class="lesson-number">05</div><h3>Operação e Entrega</h3><p>Análise dos pontos que afetam seu tempo de entrega, a experiência do cliente e a reputação da loja.</p></article>
+          <article class="lesson"><div class="lesson-number">06</div><h3>Plano de Ação</h3><p>Receba recomendações práticas e uma ordem de prioridades para começar a melhorar sua loja.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mentor" id="mentor">
+      <div class="wrap mentor-grid">
+        <div class="mentor-photo"><img src="{{ url_for('static', filename='img/foto-eric.webp') }}" alt="Eric Rodrigues em um evento do iFood" loading="lazy"></div>
+        <div class="mentor-copy"><p class="eyebrow">COM QUEM VOCÊ APRENDERÁ?</p><h2 class="section-title">Eric Rodrigues</h2><p>Um empreendedor que transformou R$20mil mensais em um império de R$1milhão mensais, e hoje revela as estratégias reais que usou para vencer.</p><p>Começou como franqueado de uma Subway, brigando para pagar as contas. Hoje, com 5 restaurantes, 3 subways e 3 marmitarias, Eric alcança a marca de 10 milhões de faturamento/ano em toda sua operação.</p><p>O segredo? Ele descobriu como fazer o iFood a priorizar suas lojas, reduziu custos, criou estratégias de conversão comprovadas, com cardápios que vendem sozinhos e promoções que geram +70% de pedidos.</p><a class="btn btn--animated btn--light" href="#compra" data-cta="mentor" onclick="trackCTA('mentor')">Quero aumentar minhas vendas <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="offer" id="compra">
+      <div class="wrap">
+        <div class="offer-intro"><p class="eyebrow">ALAVANQUE SUAS VENDAS</p><h2 class="section-title">Aproveite agora essa oferta por tempo limitado</h2><p class="section-lead">Oferta Exclusiva</p></div>
+        <div class="offer-card">
+          <div class="offer-main">
+            <span class="offer-label">Oferta Exclusiva</span>
+            <h3>Análise de Loja - Gravada</h3>
+            <ul class="offer-list">
+              <li><svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="7.5" fill="currentColor"/><path d="m5.2 8.5 2.1 2.1 4.5-4.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Diagnóstico gravado e 100% personalizado.</li>
+              <li><svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="7.5" fill="currentColor"/><path d="m5.2 8.5 2.1 2.1 4.5-4.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Avaliação detalhada dos pontos que travam suas vendas.</li>
+              <li><svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="7.5" fill="currentColor"/><path d="m5.2 8.5 2.1 2.1 4.5-4.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Recomendações práticas para aplicar na sua loja.</li>
+              <li><svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="7.5" fill="currentColor"/><path d="m5.2 8.5 2.1 2.1 4.5-4.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 7 dias de garantia incondicional.</li>
+            </ul>
+          </div>
+          <div class="offer-price"><small>Invista na sua operação</small><div class="installment"><span class="price-prefix">12x de</span><div class="price-value"><span class="currency">R$</span><strong class="amount">30,68</strong></div></div><p class="cash">OU R$ 297,00 À VISTA</p><a class="btn btn--animated btn--light" href="https://pay.cakto.com.br/4de979x" target="_blank" rel="noopener" data-cta="purchase" onclick="trackCTA('purchase')">Quero minha análise <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="offer-security"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5 13 3v3.75c0 3.2-2.1 6.1-5 7.75-2.9-1.65-5-4.55-5-7.75V3l5-1.5Z" stroke="currentColor" stroke-width="1.1"/></svg> Pagamento seguro • instruções de envio após a compra</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="wrap faq-grid">
+        <div><p class="eyebrow">FAQ</p><h2 class="section-title">Perguntas frequentes</h2></div>
+        <div class="faq-list">
+          <details open><summary>Como funciona a análise?</summary><p>Após o pagamento, você recebe as instruções para enviar as informações da sua loja. O especialista avalia sua operação e prepara um diagnóstico gravado e personalizado.</p></details>
+          <details><summary>Preciso estar online durante a análise?</summary><p>Não. A análise é gravada, então você pode assistir no seu tempo e rever as recomendações sempre que precisar.</p></details>
+          <details><summary>Preciso preparar algo?</summary><p>Tenha em mãos as informações e os dados da sua loja no iFood que forem solicitados após a compra.</p></details>
+          <details><summary>Qual a garantia?</summary><p>7 dias de garantia incondicional. Se não gostar, devolvemos seu dinheiro.</p></details>
+          <details><summary>Aceita cartão?</summary><p>Sim! Parcele em até 12x ou pague à vista com Pix.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-inner">
+      <span>TODOS OS DIREITOS RESERVADOS</span>
+      <span class="footer-credit">Feito pela V4 Company Lisboa &amp; Co.</span>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var utm = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+      var stored = {};
+      utm.forEach(function (key) { if (params.get(key)) stored[key] = params.get(key); });
+      try { if (Object.keys(stored).length) sessionStorage.setItem('elite_utm', JSON.stringify(stored)); } catch (error) {}
+      window.trackCTA = function (placement) {
+        var payload = { placement: placement || 'unknown', page_name: 'analise_de_loja_gravada_ifood' };
+        try { Object.assign(payload, JSON.parse(sessionStorage.getItem('elite_utm') || '{}')); } catch (error) {}
+        if (typeof window.firebullTrack === 'function') window.firebullTrack('click_cta', payload);
+        else { window.dataLayer = window.dataLayer || []; window.dataLayer.push(Object.assign({ event: 'click_cta' }, payload)); }
+      };
+    }());
+  </script>
+</body>
+</html>
