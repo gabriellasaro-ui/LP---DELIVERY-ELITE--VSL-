@@ -693,6 +693,18 @@
       margin-top: clamp(40px, 5vw, 58px);
     }
 
+    /* Grade travada em 3 colunas: com auto-fit a ultima secao caia em
+       4 + 2 e a segunda linha ficava orfa no meio da tela. */
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+    @media (max-width: 900px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 620px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
     /* ============ CARDS ============ */
     .card {
       position: relative;
@@ -806,6 +818,99 @@
       font-family: var(--font-display);
       font-weight: 700;
       font-size: 1.08em;
+    }
+
+
+    /* ============ BLOCO DE EXCLUSIVIDADE ============ */
+    .exclusive {
+      position: relative;
+      margin-top: clamp(26px, 3.2vw, 38px);
+      padding: clamp(30px, 4vw, 46px);
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      background:
+        linear-gradient(150deg, rgba(255, 59, 66, 0.17), rgba(255, 59, 66, 0.02) 64%),
+        var(--ink-3);
+      box-shadow: 0 26px 62px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Marca de fundo: reforca a exclusividade sem ocupar espaco de leitura */
+    .exclusive::before {
+      content: "SÓ AQUI";
+      position: absolute;
+      right: -14px;
+      bottom: -34px;
+      color: rgba(255, 59, 66, 0.06);
+      font-family: var(--font-display);
+      font-size: clamp(78px, 13vw, 168px);
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .exclusive > * { position: relative; z-index: 1; }
+
+    .exclusive-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff4f55, var(--red) 54%, var(--red-deep));
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 30px rgba(255, 59, 66, 0.3);
+    }
+
+    .exclusive-tag svg { width: 13px; height: 13px; fill: currentColor; }
+
+    .exclusive h3 {
+      max-width: 780px;
+      margin: 20px 0 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.28rem, 2.7vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.022em;
+      text-wrap: balance;
+    }
+
+    .exclusive h3 em { font-style: normal; color: var(--red-bright); }
+
+    .exclusive p {
+      max-width: 720px;
+      margin: 16px 0 0;
+      color: #dededf;
+      font-size: 1rem;
+      line-height: 1.62;
+      text-wrap: pretty;
+    }
+
+    .exclusive p b { color: var(--text); font-weight: 600; }
+
+    .exclusive-note {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 22px !important;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(255, 59, 66, 0.28);
+      color: var(--text-dim) !important;
+      font-size: 0.86rem !important;
+    }
+
+    .exclusive-note svg {
+      flex: 0 0 auto;
+      margin-top: 3px;
+      width: 15px;
+      height: 15px;
+      fill: var(--red-bright);
     }
 
     /* ============ CARROSSEL DE PROVAS ============ */
@@ -1189,6 +1294,31 @@
             <p><b>Plano de ação por escrito</b> — pra aplicar sozinho depois da sessão, direto nos pontos que a análise encontrar na sua loja.</p>
           </li>
         </ul>
+
+        <!-- Ancora de exclusividade: explica por que a mentoria ao vivo
+             aparece dentro desta oferta e nao em qualquer outro lugar. -->
+        <div class="exclusive reveal">
+          <span class="exclusive-tag">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm-3 8V6a3 3 0 1 1 6 0v3H9z"/></svg>
+            Condição exclusiva desta página
+          </span>
+          <h3>A mentoria ao vivo com o Eric entra junto com a análise — <em>só por aqui</em>.</h3>
+          <p>
+            A sessão individual ao vivo é um serviço à parte: quem chega por qualquer outro
+            caminho contrata ela separadamente, e <b>paga bem mais caro por isso</b>.
+          </p>
+          <p>
+            Quem assistiu a esta apresentação leva <b>as duas coisas na mesma condição</b>:
+            a análise completa da loja no iFood, 99 e Keeta <b>mais</b> a hora ao vivo com o Eric,
+            olhando a sua operação na tela junto com você.
+          </p>
+          <p class="exclusive-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 6v6c0 5.2 3.8 9.4 9 10 5.2-.6 9-4.8 9-10V6l-9-4zm0 6a1.2 1.2 0 0 1 1.2 1.2v4a1.2 1.2 0 0 1-2.4 0v-4A1.2 1.2 0 0 1 12 8zm0 9.6a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6z"/></svg>
+            <span>Essa condição vale enquanto esta página estiver no ar e não se repete no
+            atendimento comum. Fora daqui, a mentoria ao vivo volta a ser vendida separadamente,
+            pelo valor cheio.</span>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -1286,7 +1416,7 @@
           </p>
         </div>
 
-        <ul class="grid">
+        <ul class="grid grid-3">
           <li class="card reveal">
             <span class="card-num">01</span>
             <p>Donos de restaurantes e bares que querem <b>lucrar mais no delivery</b>.</p>
@@ -1322,7 +1452,8 @@
           <span class="section-tag">Próximo passo</span>
           <h2 id="final-title">Receba a <em>análise da sua loja</em></h2>
           <p class="section-lead">
-            O mesmo método aplicado em mais de 500 restaurantes, olhando para a sua operação.
+            A análise da loja mais a mentoria ao vivo com o Eric, na condição que só existe
+            nesta página.
           </p>
         </div>
 
