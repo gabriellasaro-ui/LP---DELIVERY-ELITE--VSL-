@@ -705,6 +705,24 @@
       .grid-3 { grid-template-columns: 1fr; }
     }
 
+    /* 10 itens em 5 colunas. Os degraus caem para 2 e 1 de proposito:
+       com 3 ou 4 colunas sobra card orfao na ultima fileira. */
+    .grid-5 { grid-template-columns: repeat(5, 1fr); gap: 14px; }
+
+    @media (max-width: 1040px) {
+      .grid-5 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .grid-5 { grid-template-columns: 1fr; }
+    }
+
+    /* Coluna estreita: o respiro de 25px comia a largura util do texto */
+    @media (min-width: 1041px) {
+      .grid-5 .card { padding: 24px 19px; gap: 13px; }
+      .grid-5 .card p { font-size: 0.93rem; line-height: 1.5; }
+    }
+
     /* ============ CARDS ============ */
     .card {
       position: relative;
@@ -1244,7 +1262,7 @@
           </p>
         </div>
 
-        <ul class="grid">
+        <ul class="grid grid-5">
           <li class="card reveal">
             <span class="card-num">01</span>
             <p><b>Estrutura do cardápio</b> — categorias na ordem que faz o cliente decidir mais rápido.</p>
@@ -1284,14 +1302,6 @@
           <li class="card reveal">
             <span class="card-num">10</span>
             <p><b>Comparação direta com concorrente real</b> — a loja vizinha vendendo mais o mesmo prato.</p>
-          </li>
-          <li class="card card-money reveal">
-            <span class="card-num">11</span>
-            <p><b>Mentoria individual de 1 a 2 horas</b> — tira dúvida com o Eric na hora, ao vivo.</p>
-          </li>
-          <li class="card card-money reveal">
-            <span class="card-num">12</span>
-            <p><b>Plano de ação por escrito</b> — pra aplicar sozinho depois da sessão, direto nos pontos que a análise encontrar na sua loja.</p>
           </li>
         </ul>
 
