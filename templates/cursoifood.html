@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestão iFood</title>
+  <meta name="description" content="Aprenda a criar um cardápio que conquista clientes e domine estratégias comprovadas para aumentar suas vendas dentro do iFood.">
+  <meta name="theme-color" content="#41000b">
+  <link rel="icon" href="static/img/logo-mark.png" type="image/png">
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WG68M2TS');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --red:#ec0920; --red-dark:#a90518; --red-deep:#41000b; --ink:#171116; --muted:#6c6265; --paper:#fffdfd; --line:#eadfe1; --shadow:0 22px 65px rgba(49,0,8,.12); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:'DM Sans',Arial,sans-serif; overflow-x:hidden; }
+    a { color:inherit; }
+    img { display:block; max-width:100%; }
+    .wrap { width:min(1160px, calc(100% - 40px)); margin:0 auto; }
+    .eyebrow { display:flex; align-items:center; gap:10px; margin:0 0 18px; color:var(--red); font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+    .eyebrow::before { content:''; width:30px; height:3px; border-radius:10px; background:currentColor; }
+    .section-title { max-width:680px; margin:0; font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(32px,4vw,58px); line-height:.98; letter-spacing:-.055em; }
+    .section-title em { color:var(--red); font-style:normal; }
+    .section-lead { max-width:680px; margin:20px 0 0; color:var(--muted); font-size:18px; line-height:1.65; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:56px; padding:0 27px; border:1px solid transparent; border-radius:99px; background:var(--red); color:#fff; font-size:15px; font-weight:700; text-decoration:none; box-shadow:0 12px 30px rgba(236,9,32,.25); transition:transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .btn:hover { background:#c9071c; box-shadow:0 16px 35px rgba(236,9,32,.32); transform:translateY(-2px); }
+    .btn--light { background:#fff; color:var(--red); box-shadow:0 14px 30px rgba(0,0,0,.16); }
+    .btn--light:hover { background:#fff4f5; }
+    .btn--animated { animation:cta-pulse 2.4s ease-in-out infinite; }
+    @keyframes cta-pulse { 0%,100% { transform:translateY(0); box-shadow:0 12px 30px rgba(236,9,32,.24); } 50% { transform:translateY(-3px); box-shadow:0 18px 40px rgba(236,9,32,.38); } }
+    .hero { position:relative; width:100%; height:min(56.25vw,900px); overflow:hidden; background:var(--red-deep); color:#fff; isolation:isolate; }
+    .hero-art { position:absolute; z-index:-2; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+    .hero .wrap { position:relative; width:min(1500px,calc(100% - 160px)); height:100%; }
+    .hero-nav { position:absolute; inset:0 0 auto; z-index:2; display:flex; justify-content:flex-end; align-items:center; padding:28px 0; }
+    .nav-link { display:inline-flex; align-items:center; gap:7px; color:#fff; font-size:13px; font-weight:700; text-decoration:none; }
+    .hero-content { height:100%; display:flex; align-items:center; padding:72px 0 30px; }
+    .hero-copy { width:min(620px,50%); }
+    h1 { max-width:620px; margin:0; font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(46px,4.2vw,64px); line-height:.98; letter-spacing:-.05em; }
+    h1 span { color:#ffbdc3; }
+    .hero-copy p { max-width:540px; margin:27px 0 30px; color:#ffe9eb; font-size:18px; line-height:1.6; }
+    .hero-note { display:flex; align-items:center; gap:10px; margin-top:15px; color:#ffd4d8; font-size:12px; }
+    .hero-marquee { display:block; width:100%; overflow:hidden; background:#fff; color:var(--red); font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+    .hero-marquee-track { display:flex; width:max-content; padding:15px 0; animation:hero-marquee-move 26s linear infinite; }
+    .hero-marquee span { padding:0 24px; }
+    @keyframes hero-marquee-move { to { transform:translateX(-50%); } }
+    .intro { padding:115px 0 120px; background:#fff; }
+    .intro-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(40px,8vw,120px); align-items:center; }
+    .intro-side { display:flex; flex-direction:column; align-items:flex-start; padding-top:20px; }
+    .intro-side > p { max-width:570px; margin:0; color:var(--muted); font-size:17px; line-height:1.65; }
+    .audience-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; width:100%; margin-top:34px; border:1px solid var(--line); background:var(--line); }
+    .audience-item { min-height:160px; padding:28px; background:#fff; }
+    .audience-item strong { display:block; margin-bottom:11px; font-family:'Space Grotesk',Arial,sans-serif; font-size:20px; letter-spacing:-.03em; }
+    .audience-item p { margin:0; color:var(--muted); font-size:15px; line-height:1.55; }
+    .audience-item b { color:var(--red); }
+    .intro-side > .btn { margin-top:38px; }
+    .help { padding:110px 0; background:var(--red); color:#fff; }
+    .help .eyebrow { color:#ffb8c0; }
+    .help .section-title { max-width:760px; }
+    .help .section-title em { color:#ffd1d6; }
+    .help-intro { display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(45px,8vw,120px); align-items:start; margin-top:28px; }
+    .help-copy .section-lead { max-width:650px; margin:0 0 18px; color:#ffe4e7; font-size:16px; line-height:1.55; }
+    .help-copy .btn { margin-top:18px; }
+    .help-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:55px; }
+    .help-card { min-height:216px; padding:30px; border:1px solid rgba(255,255,255,.25); background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.04)); }
+    .help-card:nth-child(even) { background:#fff; color:var(--ink); }
+    .help-card:nth-child(even) p { color:var(--muted); }
+    .help-number { display:block; margin-bottom:32px; color:#ffbdc3; font-family:'Space Grotesk',Arial,sans-serif; font-size:14px; font-weight:700; letter-spacing:.08em; }
+    .help-card:nth-child(even) .help-number { color:var(--red); }
+    .help-card h3 { margin:0 0 10px; font-family:'Space Grotesk',Arial,sans-serif; font-size:23px; letter-spacing:-.04em; }
+    .help-card p { margin:0; color:#ffe4e7; font-size:15px; line-height:1.55; }
+    .results { padding:100px 0; background:#fafafa; text-align:center; }
+    .results-head .eyebrow { justify-content:center; }
+    .results-head .section-title { max-width:none; margin:0 auto; font-size:clamp(30px,3.2vw,44px); letter-spacing:-.045em; }
+    .results-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; max-width:1160px; margin:54px auto 0; }
+    .result-card { margin:0; padding:10px; border:0; border-radius:16px; background:#fff; box-shadow:0 12px 30px rgba(65,0,11,.08); overflow:hidden; }
+    .result-card img { width:100%; aspect-ratio:1170/983; object-fit:cover; border-radius:10px; }
+    .results > .wrap > .btn { display:inline-flex; width:auto; margin:42px auto 0; border-radius:4px; box-shadow:none; }
+    .live { padding:120px 0; background:#fff; }
+    .live-head { display:flex; justify-content:space-between; align-items:end; gap:30px; }
+    .live-head .section-lead { margin:0; max-width:380px; font-size:15px; }
+    .lesson-list { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:55px; border-top:1px solid var(--line); }
+    .lesson { min-height:240px; padding:28px 24px 25px 0; border-bottom:1px solid var(--line); }
+    .lesson:nth-child(3n+2), .lesson:nth-child(3n+3) { padding-left:24px; border-left:1px solid var(--line); }
+    .lesson-number { color:var(--red); font-family:'Space Grotesk',Arial,sans-serif; font-size:32px; font-weight:700; letter-spacing:-.06em; }
+    .lesson h3 { margin:28px 0 10px; font-family:'Space Grotesk',Arial,sans-serif; font-size:20px; letter-spacing:-.03em; }
+    .lesson p { margin:0; color:var(--muted); font-size:14px; line-height:1.55; }
+    .mentor { padding:125px 0; background:#fff; color:var(--ink); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .mentor-grid { display:grid; grid-template-columns:minmax(420px,.95fr) 1.05fr; gap:clamp(50px,7vw,110px); align-items:center; }
+    .mentor-photo { position:relative; padding:14px; background:linear-gradient(135deg,var(--red),#ffb8bd); box-shadow:0 24px 55px rgba(236,9,32,.16); }
+    .mentor-photo img { width:100%; aspect-ratio:1/1.12; object-fit:cover; object-position:center; }
+    .mentor-photo::after { content:'Eric Rodrigues'; position:absolute; right:-18px; bottom:28px; padding:12px 15px; background:#fff; color:var(--red); font-size:12px; font-weight:700; }
+    .mentor-copy p { color:var(--muted); font-size:16px; line-height:1.7; }
+    .mentor-copy p:first-of-type { color:var(--ink); font-size:20px; }
+    .mentor .btn--light { background:var(--red); color:#fff; }
+    .offer { position:relative; padding:120px 0 130px; background:linear-gradient(135deg,#f8f2f3 0%,#fff 50%,#ffe8eb 100%); overflow:hidden; }
+    .offer::before { content:'OFERTA'; position:absolute; top:30px; right:-20px; color:rgba(236,9,32,.055); font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(130px,22vw,320px); font-weight:700; letter-spacing:-.1em; line-height:1; pointer-events:none; }
+    .offer-intro { text-align:center; }
+    .offer-intro .eyebrow { justify-content:center; }
+    .offer-intro .section-title { margin:0 auto; }
+    .offer-intro .section-lead { margin:18px auto 0; font-size:17px; }
+    .offer-card { position:relative; display:grid; grid-template-columns:1.08fr .92fr; max-width:1000px; margin:54px auto 0; overflow:hidden; border-radius:24px; background:#fff; box-shadow:0 30px 80px rgba(116,0,17,.18); }
+    .offer-main { padding:52px 56px; background:#fff; }
+    .offer-label { display:inline-block; margin-bottom:20px; padding:7px 10px; border-radius:5px; background:#ffe1e4; color:var(--red); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    .offer-main h3 { max-width:360px; margin:0; font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(28px,4vw,45px); line-height:1; letter-spacing:-.06em; }
+    .offer-list { display:grid; gap:15px; margin:34px 0 0; padding:0; list-style:none; }
+    .offer-list li { display:flex; gap:11px; align-items:flex-start; font-size:14px; line-height:1.4; }
+    .offer-price { display:flex; flex-direction:column; justify-content:center; min-height:430px; padding:52px; border-left:8px solid #fff; background:var(--red); color:#fff; }
+    .offer-price small { color:#ffd8dc; font-size:13px; font-weight:600; }
+    .installment { margin:20px 0 0; font-family:'Space Grotesk',Arial,sans-serif; font-size:22px; letter-spacing:-.03em; }
+    .price-prefix { display:block; font-size:24px; line-height:1; }
+    .price-value { display:flex; align-items:flex-start; gap:10px; margin-top:8px; }
+    .price-value .currency { margin-top:10px; padding:7px 9px; border-radius:6px; background:#fff; color:var(--red); font-size:23px; font-weight:700; letter-spacing:-.04em; }
+    .price-value strong { display:block; margin:0; font-family:Arial,Helvetica,sans-serif; font-size:76px; font-weight:800; line-height:.9; letter-spacing:0; font-variant-numeric:tabular-nums; white-space:nowrap; }
+    .cash { margin:17px 0 0; color:#fff0f1; font-size:14px; }
+    .offer-price .btn { width:100%; margin-top:28px; }
+    .offer-security { display:flex; gap:8px; align-items:center; margin-top:15px; color:#ffd8dc; font-size:11px; line-height:1.4; }
+    .faq { padding:110px 0; background:#fff; }
+    .faq-grid { display:grid; grid-template-columns:.75fr 1.25fr; gap:clamp(50px,10vw,140px); }
+    .faq-list { border-top:1px solid var(--line); }
+    details { border-bottom:1px solid var(--line); }
+    summary { display:flex; justify-content:space-between; gap:25px; padding:23px 0; cursor:pointer; list-style:none; font-family:'Space Grotesk',Arial,sans-serif; font-size:18px; font-weight:600; letter-spacing:-.03em; }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:'+'; color:var(--red); font-size:25px; font-weight:400; }
+    details[open] summary::after { content:'−'; }
+    details p { max-width:630px; margin:0 40px 23px 0; color:var(--muted); font-size:15px; line-height:1.6; }
+    footer { background:#130106; border-top:4px solid var(--red); }
+    .footer-inner { width:min(1160px,calc(100% - 40px)); min-height:92px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:22px; color:#f9e7e9; font-size:11px; letter-spacing:.12em; text-align:left; text-transform:uppercase; }
+    .footer-credit { color:#d3aeb3; text-transform:none; letter-spacing:0; }
+    @media (max-width:900px) {
+      .hero-content { padding:70px 0 24px; }
+      .hero-copy { width:min(650px,78%); }
+      .hero .wrap { width:min(1180px,calc(100% - 40px)); }
+      .intro-grid, .mentor-grid, .faq-grid, .help-intro { grid-template-columns:1fr; }
+      .results-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+      .lesson-list { grid-template-columns:repeat(2,1fr); }
+      .lesson:nth-child(3n+2), .lesson:nth-child(3n+3) { padding-left:0; border-left:0; }
+      .lesson:nth-child(even) { padding-left:24px; border-left:1px solid var(--line); }
+      .offer-card { grid-template-columns:1fr; max-width:600px; }
+      .offer-price { border-left:0; border-top:8px solid #fff; }
+    }
+    @media (max-width:620px) {
+      .wrap { width:min(100% - 32px, 520px); }
+      .hero { height:auto; aspect-ratio:9/16; }
+      .hero-art { object-position:center bottom; }
+      .hero-nav { padding-top:20px; }
+      .nav-link { display:none; }
+      .hero-content { height:100%; align-items:flex-end; padding:0 0 34px; }
+      .hero-copy { display:flex; width:100%; max-width:330px; margin:0 auto; flex-direction:column; align-items:center; text-align:center; }
+      .hero .wrap { width:calc(100% - 32px); }
+      h1 { max-width:290px; font-size:29px; line-height:1.04; letter-spacing:-.035em; }
+      .hero-copy p { max-width:285px; margin:15px auto 19px; font-size:13px; line-height:1.45; }
+      .hero-note { justify-content:center; margin-top:13px; font-size:11px; text-align:center; }
+      .intro, .help, .results, .live, .mentor, .offer, .faq { padding:80px 0; }
+      .audience-grid, .help-grid, .lesson-list { grid-template-columns:1fr; }
+      .audience-item, .help-card { min-height:0; padding:24px; }
+      .help-card:nth-child(even) { transform:none; }
+      .lesson, .lesson:nth-child(even) { min-height:0; padding:25px 0; border-left:0; }
+      .mentor-photo::after { right:0; }
+      .offer-price { min-height:0; padding:38px 28px; }
+      .price-value strong { font-size:62px; }
+      .footer-inner { min-height:120px; flex-direction:column; justify-content:center; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG68M2TS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <header class="hero" id="top">
+    <picture>
+      <source media="(max-width: 620px)" srcset="static/img/banner-mobile.webp" width="941" height="1672">
+      <img class="hero-art" src="static/img/banner-pc.webp" width="1672" height="941" alt="Especialista acompanhando resultados de vendas no iFood" fetchpriority="high">
+    </picture>
+    <div class="wrap">
+      <nav class="hero-nav" aria-label="Navegação principal"><a class="nav-link" href="#compra">Garantir meu acesso ↗</a></nav>
+      <div class="hero-content">
+        <div class="hero-copy">
+          <h1>Aumente suas vendas e faça sua loja performar com capacidade máxima dentro do <span>iFood</span>!</h1>
+          <p>Aprenda a criar um cardápio que conquista clientes e domine estratégias comprovadas para aumentar suas vendas dentro do iFood em até 3x.</p>
+          <a class="btn btn--animated btn--light" href="#compra" data-cta="hero" onclick="trackCTA('hero')">Quero vender mais agora ↗</a>
+          <div class="hero-note">Aula prática para destravar cardápio, preço, busca e conversão.</div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="hero-marquee"><div class="hero-marquee-track"><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span><span>Aumente suas vendas no Ifood ●</span></div></div>
+  <main>
+    <section class="intro" id="para-quem">
+      <div class="wrap intro-grid">
+        <div><p class="eyebrow">PARA QUEM É?</p><h2 class="section-title">Este produto é <em>perfeito</em> para:</h2></div>
+        <div class="intro-side">
+          <p>Quem quer parar de depender de sorte dentro do aplicativo e começar a organizar a loja para vender mais todos os dias.</p>
+          <div class="audience-grid">
+            <article class="audience-item"><strong>01</strong><p>Donos de restaurantes e bares que querem <b>lucrar mais</b> no iFood.</p></article>
+            <article class="audience-item"><strong>02</strong><p>Chefs e cozinheiros que desejam <b>atrair mais clientes</b> para sua loja.</p></article>
+            <article class="audience-item"><strong>03</strong><p>Empreendedores que buscam <b>entender o algoritmo</b> do iFood.</p></article>
+            <article class="audience-item"><strong>04</strong><p>Quem está começando e quer <b>evitar erros</b> para crescer rápido.</p></article>
+          </div>
+          <a class="btn btn--animated" href="#compra" data-cta="audience" onclick="trackCTA('audience')">Quero faturar mais ↗</a>
+        </div>
+      </div>
+    </section>
+    <section class="help" id="como-ajuda">
+      <div class="wrap">
+        <p class="eyebrow">COMO VAI TE AJUDAR?</p>
+        <div class="help-intro">
+          <h2 class="section-title">Atraia mais pedidos e <em>domine de uma vez</em> o iFood.</h2>
+          <div class="help-copy">
+            <p class="section-lead">Com as estratégias certas, seu restaurante pode aparecer no topo das buscas, garantindo mais visibilidade e aumentando suas vendas de forma consistente.</p>
+            <p class="section-lead">Descubra como dominar o algoritmo do iFood, ajustar preços para maximizar lucros sem perder clientes e criar um cardápio irresistível que transforma visitantes em compradores fiéis.</p>
+            <a class="btn btn--animated btn--light" href="#compra" data-cta="help" onclick="trackCTA('help')">Quero aumentar minhas vendas ↗</a>
+          </div>
+        </div>
+        <div class="help-grid">
+          <article class="help-card"><span class="help-number">01</span><h3>Mais visibilidade</h3><p>Entenda o que melhora o posicionamento da loja e aumenta a chance de aparecer para quem está pronto para pedir.</p></article>
+          <article class="help-card"><span class="help-number">02</span><h3>Cardápio que vende</h3><p>Ajuste fotos, nomes, descrições e organização para transformar visitantes em compradores.</p></article>
+          <article class="help-card"><span class="help-number">03</span><h3>Preço com margem</h3><p>Aprenda a otimizar preços para vender mais sem sacrificar o lucro da operação.</p></article>
+          <article class="help-card"><span class="help-number">04</span><h3>Clientes voltando</h3><p>Use estratégias rápidas para fazer o cliente comprar de novo e manter vendas consistentes.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="results" id="resultados">
+      <div class="wrap">
+        <div class="results-head"><p class="eyebrow">RESULTADOS</p><h2 class="section-title">Veja você mesmo o resultado de alguns alunos</h2></div>
+        <div class="results-grid">
+          <figure class="result-card"><img src="static/img/resultado-01.webp" alt="Resultado de vendas de aluno no iFood" loading="lazy"></figure>
+          <figure class="result-card"><img src="static/img/resultado-04.webp" alt="Resultado de vendas de aluno no iFood" loading="lazy"></figure>
+          <figure class="result-card"><img src="static/img/resultado-03.webp" alt="Resultado de vendas de aluno no iFood" loading="lazy"></figure>
+          <figure class="result-card"><img src="static/img/resultado-02.webp" alt="Resultado de vendas de aluno no iFood" loading="lazy"></figure>
+        </div>
+        <a class="btn btn--animated" href="#compra" data-cta="results" onclick="trackCTA('results')">Quero faturar mais ↗</a>
+      </div>
+    </section>
+    <section class="live" id="conteudo">
+      <div class="wrap">
+        <div class="live-head"><div><p class="eyebrow">O CONTEÚDO</p><h2 class="section-title">O que você vai aprender?</h2></div><p class="section-lead">Uma aula com as melhores estratégias para criar um cardápio magnético e de alta conversão de vendas.</p></div>
+        <div class="lesson-list">
+          <article class="lesson"><div class="lesson-number">01</div><h3>Apareça no topo</h3><p>Entenda como o algoritmo do iFood funciona e como se posicionar melhor.</p></article>
+          <article class="lesson"><div class="lesson-number">02</div><h3>Fidelize seus clientes</h3><p>Estratégias rápidas para garantir que os clientes sempre voltem a comprar.</p></article>
+          <article class="lesson"><div class="lesson-number">03</div><h3>Ajuste de preços</h3><p>Como otimizar seus preços para maximizar o lucro sem perder vendas.</p></article>
+          <article class="lesson"><div class="lesson-number">04</div><h3>Cardápio eficiente</h3><p>Dicas práticas para criar um cardápio magnético e de alta conversão de vendas.</p></article>
+          <article class="lesson"><div class="lesson-number">EXTRA</div><h3>Bônus exclusivo</h3><p>50 dicas para aumentar suas vendas, com SEO, atendimento, reviews e muito mais.</p></article>
+          <article class="lesson"><div class="lesson-number">05</div><h3>Plano aplicável</h3><p>Saia com uma visão mais clara do que ajustar primeiro para vender mais no app.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="mentor" id="mentor">
+      <div class="wrap mentor-grid">
+        <div class="mentor-photo"><img src="static/img/foto-eric.webp" alt="Eric Rodrigues em um evento do iFood" loading="lazy"></div>
+        <div class="mentor-copy">
+          <p class="eyebrow">COM QUEM VOCÊ APRENDERÁ?</p>
+          <h2 class="section-title">Eric Rodrigues</h2>
+          <p>Um empreendedor que transformou R$20mil mensais em um império de R$1milhão mensais, e hoje revela as estratégias reais que usou para vencer.</p>
+          <p>Começou como franqueado de uma Subway, brigando para pagar as contas. Hoje, com 3 franquias e 2 restaurantes próprios, Eric fatura R$500mil por mês só no iFood e mais de R$1milhão por mês em toda sua operação.</p>
+          <p>O segredo? Ele descobriu como fazer o iFood priorizar suas lojas, reduziu custos, criou estratégias de conversão comprovadas, com cardápios que vendem sozinhos e promoções que geram mais pedidos.</p>
+          <a class="btn btn--animated btn--light" href="#compra" data-cta="mentor" onclick="trackCTA('mentor')">Quero aumentar minhas vendas ↗</a>
+        </div>
+      </div>
+    </section>
+    <section class="offer" id="compra">
+      <div class="wrap">
+        <div class="offer-intro"><p class="eyebrow">ALAVANQUE SUAS VENDAS</p><h2 class="section-title">Aproveite agora essa oferta por tempo limitado</h2><p class="section-lead">Oferta Exclusiva</p></div>
+        <div class="offer-card">
+          <div class="offer-main"><span class="offer-label">Oferta Exclusiva</span><h3>Aula completa de criação de cardápio</h3><ul class="offer-list"><li>✓ Aula completa de criação de cardápio.</li><li>✓ Ebook com 50 dicas para aumentar suas vendas.</li><li>✓ Dicas práticas de SEO, atendimento, gestão de reviews e muito mais.</li><li>✓ Acesso imediato após a compra.</li></ul></div>
+          <div class="offer-price"><small>Invista na sua loja</small><div class="installment"><span class="price-prefix">12x de</span><div class="price-value"><span class="currency">R$</span><strong>11,28</strong></div></div><p class="cash">OU R$ 97,00 À VISTA</p><a class="btn btn--animated btn--light" href="https://pay.cakto.com.br/3rYoVKD" target="_blank" rel="noopener" data-cta="purchase" onclick="trackCTA('purchase')">Clique aqui para adquirir ↗</a><div class="offer-security">Pagamento seguro • acesso imediato após a compra</div></div>
+        </div>
+      </div>
+    </section>
+    <section class="faq" id="faq">
+      <div class="wrap faq-grid">
+        <div><p class="eyebrow">FAQ</p><h2 class="section-title">Perguntas frequentes</h2></div>
+        <div class="faq-list">
+          <details open><summary>Como recebo o acesso?</summary><p>Imediato! Após a compra, você recebe por e-mail login para a plataforma + ebook em PDF.</p></details>
+          <details><summary>Preciso ter experiência?</summary><p>Não! O curso é 100% prático e para todos os níveis.</p></details>
+          <details><summary>Qual a garantia?</summary><p>7 dias de garantia incondicional. Se não gostar, devolvemos seu dinheiro.</p></details>
+          <details><summary>Aceita cartão?</summary><p>Sim! Parcele em até 12x ou pague à vista com Pix.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="footer-inner"><span>TODOS OS DIREITOS RESERVADOS</span><span class="footer-credit">Feito pela V4 Company Lisboa &amp; Co.</span></div></footer>
+  <script>
+    function trackCTA(placement) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'click_cta', placement: placement || 'unknown', page_name: 'gestao_ifood_redesign' });
+    }
+  </script>
+</body>
+</html>
