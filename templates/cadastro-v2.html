@@ -117,9 +117,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 /* ENTREGA AO TECH: layout aprovado + GTM restaurado.
-   Integrar envio final ao backend/Kommo antes de publicar.
-   O botão final permanece em modo de prévia: conectar ao WhatsApp atual.
-   Não usar quiz_step como conversão de lead. Ver LEIA-ME.md. */
+   O botão final abre o WhatsApp (wa.me) igual à v1 — sem envio ao backend/CRM.
+   Nenhum dado do formulário (faturamento etc.) é enviado a lugar nenhum:
+   para levar as respostas ao Kommo é preciso a integração de backend.
+   Não usar quiz_step como conversão de lead. */
 /* =========================================================
    CONFIGURAÇÃO DO FUNIL — edite aqui título, perguntas, opções
    ========================================================= */
@@ -398,8 +399,7 @@ function advance(){
   }
 
   if(s.type === "ending"){
-    const button = document.getElementById('mainBtn');
-    if(button){button.textContent='Prévia concluída';button.disabled=true;}
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}`, "_blank");
     return;
   }
 
