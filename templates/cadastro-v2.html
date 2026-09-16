@@ -561,9 +561,11 @@
 
   <script>
     /* ENTREGA AO TECH: layout aprovado + GTM restaurado.
-       Integrar envio final ao backend/Kommo antes de publicar.
-       O botão final permanece em modo de prévia: conectar ao WhatsApp atual.
-       Não usar quiz_step como conversão de lead. Ver LEIA-ME.md. */
+       O botão final abre o WhatsApp (wa.me), igual à v1.
+       O evento "lead_qualificado" é disparado no dataLayer assim que a pessoa
+       responde a pergunta de faturamento total (penúltima etapa) — é o gatilho
+       pro webhook/tag do GTM capturar o lead, sem esperar o fim do formulário.
+       Não usar quiz_step como conversão de lead. */
     /* =========================================================
        CONFIGURAÇÃO DO FUNIL — edite aqui título, perguntas, opções
        ========================================================= */
@@ -643,7 +645,8 @@
 
     /* ========================================================= */
 
-    // Rascunho local: não envia leads ao CRM nem dados pessoais ao dataLayer.
+    // Rascunho local do progresso do formulário (recuperado se a pessoa voltar em até 24h).
+    // O envio do lead ao dataLayer é separado: acontece em pushLeadEvent(), na pergunta de faturamento.
     const DRAFT_COOKIE = 'delivery_elite_cadastro_v2';
     const DRAFT_MAX_AGE = 86400; // 24 horas após a última edição.
     let draftPersisted = false;
@@ -812,11 +815,31 @@
       });
     }
 
+    // Dispara uma única vez, assim que o faturamento total é respondido —
+    // ponto em que já há dado suficiente pra qualificar o lead e o webhook
+    // (tag do GTM escutando o evento "lead_qualificado") pode disparar.
+    let leadSent = false;
+    function pushLeadEvent() {
+      if (leadSent) return;
+      leadSent = true;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "lead_qualificado",
+        lead_nome: answers.nome || "",
+        lead_whatsapp: answers.whatsapp || "",
+        lead_papel: answers.papel || "",
+        lead_modelo: answers.modelo || "",
+        lead_faturamento_ifood: answers.faturamento_ifood || "",
+        lead_faturamento: answers.faturamento || ""
+      });
+    }
+
     function selectOption(step, optEl, allOpts) {
       allOpts.forEach(o => o.classList.remove("selected"));
       optEl.classList.add("selected");
       answers[step.key] = optEl.dataset.value;
       saveDraftCookie();
+      if (step.key === "faturamento") pushLeadEvent();
       advance();
     }
 
@@ -842,8 +865,7 @@
       }
 
       if (s.type === "ending") {
-        const button = document.getElementById('mainBtn');
-        if (button) { button.textContent = 'Prévia concluída'; button.disabled = true; }
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}`, "_blank");
         return;
       }
 
