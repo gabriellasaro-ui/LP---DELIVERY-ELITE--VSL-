@@ -287,6 +287,38 @@ function trackStep(index){
   });
 }
 
+// Empurra o valor de cada campo respondido para o dataLayer, usando o mesmo
+// nome de campo (nome, whatsapp, papel, modelo, faturamento...) que o GTM
+// mapeia para o webhook do Make/Kommo. Sem isso, o Make só recebia metadados
+// de step (step_key/step_question) e nunca o valor digitado/selecionado.
+function pushFieldToDataLayer(key, value){
+  if(!key) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "quiz_field",
+    origem: "quiz_diagnostico_ifood",
+    pagina: location.href,
+    enviado_em: new Date().toISOString(),
+    [key]: value
+  });
+}
+
+// Disparo único do webhook: só depois que o lead responde a ÚLTIMA pergunta
+// (faturamento total), quando todos os campos já foram preenchidos.
+// Configure o gatilho do webhook no GTM para escutar o evento "lead_diagnostico_ifood"
+// (em vez de "quiz_step"/"quiz_field", que disparam a cada etapa).
+function pushLeadWebhook(){
+  window.dataLayer = window.dataLayer || [];
+  const payload = {
+    event: "lead_diagnostico_ifood",
+    origem: "quiz_diagnostico_ifood",
+    pagina: location.href,
+    enviado_em: new Date().toISOString()
+  };
+  steps.forEach(s => { if(s.key) payload[s.key] = answers[s.key] || ""; });
+  window.dataLayer.push(payload);
+}
+
 function renderStep(index){
   container.innerHTML = "";
   const s = steps[index];
@@ -354,7 +386,7 @@ function renderStep(index){
   if(fieldInput){
     fieldInput.value = answers[s.key] || "";
     if(index > 0 && !window.matchMedia("(pointer: coarse)").matches) fieldInput.focus({preventScroll:true});
-    fieldInput.addEventListener("change", () => { answers[s.key]=fieldInput.value;saveDraftCookie(); });
+    fieldInput.addEventListener("change", () => { answers[s.key]=fieldInput.value;saveDraftCookie();pushFieldToDataLayer(s.key,fieldInput.value); });
     fieldInput.addEventListener("input", () => {
       answers[s.key] = fieldInput.value;
       saveDraftCookie();
@@ -374,6 +406,9 @@ function selectOption(step, optEl, allOpts){
   optEl.classList.add("selected");
   answers[step.key] = optEl.dataset.value;
   saveDraftCookie();
+  pushFieldToDataLayer(step.key, optEl.dataset.value);
+  const isLastQuestion = steps[current+1] && steps[current+1].type === "ending";
+  if(isLastQuestion) pushLeadWebhook();
   advance();
 }
 
@@ -395,7 +430,7 @@ function advance(){
   const s = steps[current];
   if(s.type !== "welcome" && s.type !== "ending"){
     const fieldInput = document.getElementById("fieldInput");
-    if(fieldInput){answers[s.key] = fieldInput.value;saveDraftCookie();}
+    if(fieldInput){answers[s.key] = fieldInput.value;saveDraftCookie();pushFieldToDataLayer(s.key,fieldInput.value);}
   }
 
   if(s.type === "ending"){
