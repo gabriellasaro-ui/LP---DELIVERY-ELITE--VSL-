@@ -1,502 +1,934 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WG68M2TS');</script>
-<!-- End Google Tag Manager -->
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-WG68M2TS');</script>
+  <!-- End Google Tag Manager -->
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Gestão iFood — Cadastro V2</title>
-<meta name="robots" content="noindex,nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" rel="stylesheet">
-<style>
-:root{--red:#d7192b;--red-dark:#b81222;--bg:#f7f7f8;--text:#202124;--gray:#62656b;--border:#d5d7dc;}
-*{box-sizing:border-box;}
-html{background:var(--bg);-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
-body{margin:0;color:var(--text);font-family:'ABeeZee',sans-serif;line-height:1.5;}
-button,input,summary{-webkit-tap-highlight-color:transparent;}
-button,input{font:inherit;}
-button{touch-action:manipulation;}
-button[hidden]{display:none!important;}
-.site-header{max-width:680px;margin:auto;padding:24px 28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.brand{font-size:16px;font-weight:400;letter-spacing:-.3px;}
-.brand strong{font-weight:700;white-space:nowrap;}
-.brand span{color:var(--red);}
-.header-note{font-size:13px;color:var(--gray);}
-#progress-track{height:4px;max-width:624px;margin:20px auto 0;background:#e3e4e8;border-radius:8px;overflow:hidden;}
-#progress-bar{height:100%;width:0;background:var(--red);transition:width .25s ease;}
-.step{width:100%;padding:32px 28px 40px;}
-.step-inner{max-width:624px;margin:auto;}
-.step-count{font-size:14px;color:var(--gray);margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
-.step-count b{font-weight:400;color:var(--red);}
-.intro{margin-bottom:26px;}
-.intro .eyebrow{font-size:14px;margin:0 0 8px;color:var(--gray);}
-.headline{font-size:32px;line-height:1.25;letter-spacing:-.65px;font-weight:400;margin:0;}
-.headline b{font-weight:700;}
-.intro-note{font-size:15px;color:var(--gray);margin:12px 0 0;}
-.benefits{margin-top:14px;font-size:15px;}
-.benefits summary{color:var(--red);cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;width:fit-content;border-radius:4px;}
-.benefits summary::after{content:'+';font-size:20px;line-height:1;}
-.benefits[open] summary::after{content:'−';}
-.benefits summary::-webkit-details-marker{display:none;}
-.bullets{font-size:16px;line-height:1.7;margin:6px 0 0;padding:12px 16px;background:#fff;border:1px solid #e5e6e9;border-radius:12px;}
-.question-title{display:block;font-size:27px;font-weight:400;line-height:1.3;letter-spacing:-.4px;margin:0 0 12px;outline:none;}
-.intro + .question-title{font-size:23px;}
-.question-help{font-size:15px;color:var(--gray);margin:0 0 20px;}
-.required-mark{display:none;}
-.field{display:block;width:100%;min-width:0;min-height:58px;padding:15px 16px;border:1.5px solid var(--border);border-radius:12px;background:#fff;color:var(--text);font-size:18px;outline:none;scroll-margin:24px;}
-.field::placeholder{color:#74777d;opacity:1;}
-.field:focus{border-color:var(--red);box-shadow:0 0 0 3px #d7192b14;}
-.field[aria-invalid=true]{border-color:var(--red);}
-.phone-row{display:flex;align-items:stretch;gap:10px;}
-.cc{display:flex;align-items:center;justify-content:center;gap:6px;font-size:16px;padding:0 13px;border:1.5px solid var(--border);border-radius:12px;background:#fff;white-space:nowrap;}
-.options{display:grid;gap:10px;}
-.option{width:100%;min-height:60px;padding:15px 16px;display:flex;align-items:center;gap:12px;border:1.5px solid var(--border);border-radius:12px;background:#fff;color:var(--text);font-size:17px;line-height:1.4;text-align:left;cursor:pointer;transition:border-color .15s,background .15s;}
-.option::after{content:'';width:19px;height:19px;border:1.5px solid #bfc2c8;border-radius:50%;margin-left:auto;flex:none;}
-.option.selected{border-color:var(--red);background:#fff1f3;}
-.option.selected::after{border:5px solid var(--red);background:white;}
-.letter{display:grid;place-items:center;flex:none;width:26px;height:26px;background:#f0f1f3;border-radius:5px;color:var(--gray);font-size:13px;}
-.btn-row{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;}
-.btn{min-height:56px;min-width:180px;padding:14px 24px;background:var(--red);color:white;border:0;border-radius:12px;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;}
-.btn::after{content:'→';font-size:22px;font-weight:400;}
-.btn:disabled{opacity:.65;cursor:default;}
-.hint{color:var(--gray);font-size:14px;}
-.hint b{font-weight:400;border:1px solid var(--border);padding:2px 5px;border-radius:4px;}
-.nav-arrows{max-width:680px;margin:0 auto;padding:0 28px 28px;}
-.nav-arrows button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:8px 12px;margin-left:-12px;background:transparent;border:0;border-radius:8px;color:var(--gray);font-size:15px;cursor:pointer;}
-.error-msg{color:#b81222;font-size:14px;line-height:1.5;margin-top:10px;display:none;}
-button:focus-visible,summary:focus-visible{outline:3px solid var(--red);outline-offset:4px;}
-@media(hover:hover){.option:hover{border-color:var(--red);background:#fff8f9;}.btn:hover{background:var(--red-dark);}.nav-arrows button:hover{background:#eaecef;}}
-@media(max-width:640px){
- .site-header{padding:20px 20px 0;padding-top:max(20px,env(safe-area-inset-top));}
- .header-note{font-size:12px;}
- #progress-track{margin:16px 20px 0;}
- .step{padding:22px 20px 8px;}
- .step-count{margin-bottom:20px;}
- .headline{font-size:clamp(24px,6.9vw,29px);line-height:1.24;}
- .intro{margin-bottom:22px;}
- .intro-note{font-size:14px;line-height:1.5;}
- .intro .eyebrow{font-size:14px;}
- .benefits{margin-top:6px;font-size:14px;}
- .question-title{font-size:25px;line-height:1.3;}
- .intro + .question-title{font-size:21px;}
- .question-help{font-size:15px;margin-bottom:18px;}
- .field{font-size:17px;min-height:56px;}
- .btn-row{margin-top:16px;}
- .btn{width:100%;min-height:56px;}
- .hint,.letter{display:none;}
- .option{min-height:58px;font-size:16px;}
- .nav-arrows{padding:12px 20px max(20px,env(safe-area-inset-bottom));}
-}
-@media(max-height:500px) and (max-width:640px){.site-header{padding-top:12px;}.step{padding-top:16px;}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;}}
-</style>
-</head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG68M2TS"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-
-<header class="site-header"><div class="brand"><strong>Gestão <span>iFood</span></strong> Delivery Elite</div></header>
-<div id="progress-track" role="progressbar" aria-label="Progresso do formulário" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0"><div id="progress-bar"></div></div>
-<main id="steps-container"></main>
-
-<div class="nav-arrows">
-  <button id="prevBtn" title="Passo anterior" aria-label="Voltar à pergunta anterior">← Voltar</button>
-  <button id="nextBtn" title="Próxima etapa">&#8250;</button>
-</div>
-
-<script>
-/* ENTREGA AO TECH: layout aprovado + GTM restaurado.
-   O botão final abre o WhatsApp (wa.me) igual à v1 — sem envio ao backend/CRM.
-   Nenhum dado do formulário (faturamento etc.) é enviado a lugar nenhum:
-   para levar as respostas ao Kommo é preciso a integração de backend.
-   Não usar quiz_step como conversão de lead. */
-/* =========================================================
-   CONFIGURAÇÃO DO FUNIL — edite aqui título, perguntas, opções
-   ========================================================= */
-const WHATSAPP_NUMBER = "551936287413"; // WABA oficial Eric Gestão Delivery Elite
-
-const steps = [
-  {
-    "type": "text",
-    "key": "nome",
-    "question": "Como podemos te chamar?",
-    "placeholder": "Seu nome",
-    "required": true,
-    "intro": "<p class=\"eyebrow\">Muito prazer, sou o Éric.</p><div class=\"headline\">Vamos transformar sua loja no iFood em uma <b>máquina de vendas.</b></div><p class=\"intro-note\">Para empresários que já têm uma loja no iFood.</p><details class=\"benefits\"><summary>Como podemos ajudar</summary><div class=\"bullets\"><div>🧠 Fazer o algoritmo trabalhar a seu favor.</div><div>🚀 Ampliar suas visualizações.</div><div>📝 Criar um cardápio lucrativo.</div><div>💰 Ajudar sua loja a faturar mais.</div></div></details>"
-  },
-  {
-    "type": "phone",
-    "key": "whatsapp",
-    "question": "Qual é o seu WhatsApp?",
-    "placeholder": "(11) 98765-4321",
-    "required": true
-  },
-  {
-    "type": "choice",
-    "key": "papel",
-    "question": "Qual é o seu papel no negócio?",
-    "placeholder": "Digite sua resposta aqui...",
-    "required": true,
-    "options": [
-      "Dono",
-      "Gerente",
-      "Outro"
-    ]
-  },
-  {
-    "type": "choice",
-    "key": "modelo",
-    "question": "O que melhor define seu modelo?",
-    "required": true,
-    "options": [
-      "Restaurante /Bar",
-      "Delivery / Dark Kitchen",
-      "Café / Doceria",
-      "Franquia",
-      "Outro"
-    ]
-  },
-  {
-    "type": "choice",
-    "key": "faturamento_ifood",
-    "question": "Qual a média de faturamento mensal no iFood hoje?",
-    "required": true,
-    "options": [
-      "Até R$20 mil",
-      "R$ 20 mil a R$ 50 mil",
-      "R$ 50 mil a R$ 100 mil",
-      "Acima de R$100 mil"
-    ]
-  },
-  {
-    "type": "choice",
-    "key": "faturamento",
-    "question": "Qual a média de faturamento mensal total hoje?",
-    "required": true,
-    "options": [
-      "Até R$20 mil",
-      "R$ 20 mil a R$ 50 mil",
-      "R$ 50 mil a R$ 100 mil",
-      "Acima de R$100 mil"
-    ]
-  },
-  {
-    "type": "ending",
-    "html": "<div class=\"headline\">Obrigado por preencher o formulário.<br>O mais breve possível a equipe do Gestão Ifood entrará em contato.</div>\n    <div class=\"bullets\" style=\"margin-top:18px;\">Caso queira adiantar seu contato agora, agora é só clicar no botão abaixo e nos chamar no WhatsApp.</div>",
-    "buttonLabel": "Enviar Mensagem"
-  }
-];
-
-/* ========================================================= */
-
-// Rascunho local: não envia leads ao CRM nem dados pessoais ao dataLayer.
-const DRAFT_COOKIE = 'delivery_elite_cadastro_v2';
-const DRAFT_MAX_AGE = 86400; // 24 horas após a última edição.
-let draftPersisted = false;
-
-function sanitizeDraftAnswers(raw){
-  const clean = {};
-  if(!raw || typeof raw !== 'object' || Array.isArray(raw)) return clean;
-  for(const step of steps){
-    if(!step.key || typeof raw[step.key] !== 'string') continue;
-    const value = raw[step.key];
-    if(step.type === 'choice'){
-      if(step.options.includes(value)) clean[step.key] = value;
-    } else if(value.length <= (step.type === 'phone' ? 40 : 160)){
-      clean[step.key] = value;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Gestão iFood — Cadastro V2</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #d7192b;
+      --red-dark: #b81222;
+      --bg: #f7f7f8;
+      --text: #202124;
+      --gray: #62656b;
+      --border: #d5d7dc;
     }
-  }
-  return clean;
-}
 
-function readDraftCookie(){
-  try{
-    const row = document.cookie.split(';').map(s=>s.trim()).find(s=>s.startsWith(DRAFT_COOKIE+'='));
-    if(!row) return {};
-    const draft = JSON.parse(decodeURIComponent(row.slice(DRAFT_COOKIE.length+1)));
-    if(draft.version !== 2 || !Number.isFinite(draft.updatedAt) ||
-      Date.now()-draft.updatedAt > DRAFT_MAX_AGE*1000 || draft.updatedAt > Date.now()+60000) return {};
-    return sanitizeDraftAnswers(draft.answers);
-  } catch { return {}; }
-}
+    * {
+      box-sizing: border-box;
+    }
 
-function saveDraftCookie(){
-  try{
-    const value = encodeURIComponent(JSON.stringify({version:2,updatedAt:Date.now(),answers:sanitizeDraftAnswers(answers)}));
-    const secure = location.protocol === 'https:' ? '; Secure' : '';
-    document.cookie = DRAFT_COOKIE+'='+value+'; Max-Age='+DRAFT_MAX_AGE+'; Path=/; SameSite=Lax'+secure;
-    draftPersisted = document.cookie.split(';').some(s=>s.trim() === DRAFT_COOKIE+'='+value);
-  } catch { draftPersisted = false; }
-  return draftPersisted;
-}
+    html {
+      background: var(--bg);
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
 
-function clearDraftCookie(){
-  try{
-    document.cookie = DRAFT_COOKIE+'=; Max-Age=0; Path=/; SameSite=Lax'+(location.protocol === 'https:' ? '; Secure' : '');
-  } catch { /* A página continua funcionando se cookies estiverem bloqueados. */ }
-  draftPersisted = false;
-}
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: 'ABeeZee', sans-serif;
+      line-height: 1.5;
+    }
 
-function resumeDraftStep(){
-  for(let i=0;i<steps.length-1;i++){
-    const s=steps[i], value=answers[s.key];
-    if(!value || !value.trim()) return i;
-    if(s.type === 'phone' && !/^\d{10,11}$/.test(value.replace(/\D/g,''))) return i;
-  }
-  // Não mostrar confirmação de envio só porque existe um rascunho completo.
-  return steps.length-2;
-}
+    button,
+    input,
+    summary {
+      -webkit-tap-highlight-color: transparent;
+    }
 
-const answers = readDraftCookie();
-let current = resumeDraftStep();
-window.deliveryEliteFormDraft = Object.freeze({
-  cookieName:DRAFT_COOKIE,
-  getAnswers:()=>sanitizeDraftAnswers(answers),
-  getCookieAnswers:readDraftCookie,
-  clear:clearDraftCookie,
-  isPersisted:()=>draftPersisted
-});
+    button,
+    input {
+      font: inherit;
+    }
 
-const container = document.getElementById("steps-container");
-const progressBar = document.getElementById("progress-bar");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+    button {
+      touch-action: manipulation;
+    }
 
-function letterFor(i){ return String.fromCharCode(65 + i); }
+    button[hidden] {
+      display: none !important;
+    }
 
-function trackStep(index){
-  const s = steps[index];
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "quiz_step",
-    step_number: index + 1,
-    step_total: steps.length,
-    step_key: s.key || s.type,
-    step_question: s.question || s.buttonLabel || ""
-  });
-}
+    .site-header {
+      max-width: 680px;
+      margin: auto;
+      padding: 24px 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
 
-// Empurra o valor de cada campo respondido para o dataLayer, usando o mesmo
-// nome de campo (nome, whatsapp, papel, modelo, faturamento...) que o GTM
-// mapeia para o webhook do Make/Kommo. Sem isso, o Make só recebia metadados
-// de step (step_key/step_question) e nunca o valor digitado/selecionado.
-function pushFieldToDataLayer(key, value){
-  if(!key) return;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "quiz_field",
-    origem: "quiz_diagnostico_ifood",
-    pagina: location.href,
-    enviado_em: new Date().toISOString(),
-    [key]: value
-  });
-}
+    .brand {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: -.3px;
+    }
 
-// Disparo único do webhook: só depois que o lead responde a ÚLTIMA pergunta
-// (faturamento total), quando todos os campos já foram preenchidos.
-// Configure o gatilho do webhook no GTM para escutar o evento "lead_diagnostico_ifood"
-// (em vez de "quiz_step"/"quiz_field", que disparam a cada etapa).
-function pushLeadWebhook(){
-  window.dataLayer = window.dataLayer || [];
-  const payload = {
-    event: "lead_diagnostico_ifood",
-    origem: "quiz_diagnostico_ifood",
-    pagina: location.href,
-    enviado_em: new Date().toISOString()
-  };
-  steps.forEach(s => { if(s.key) payload[s.key] = answers[s.key] || ""; });
-  window.dataLayer.push(payload);
-}
+    .brand strong {
+      font-weight: 700;
+      white-space: nowrap;
+    }
 
-function renderStep(index){
-  container.innerHTML = "";
-  const s = steps[index];
-  trackStep(index);
-  const wrap = document.createElement("div");
-  wrap.className = "step active";
+    .brand span {
+      color: var(--red);
+    }
 
-  let inner = `<div class="step-inner">`;
+    .header-note {
+      font-size: 13px;
+      color: var(--gray);
+    }
 
-  if(s.type === "welcome" || s.type === "ending"){
-    inner += s.html;
-    inner += `<div class="btn-row">
+    #progress-track {
+      height: 4px;
+      max-width: 624px;
+      margin: 20px auto 0;
+      background: #e3e4e8;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      height: 100%;
+      width: 0;
+      background: var(--red);
+      transition: width .25s ease;
+    }
+
+    .step {
+      width: 100%;
+      padding: 32px 28px 40px;
+    }
+
+    .step-inner {
+      max-width: 624px;
+      margin: auto;
+    }
+
+    .step-count {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-count b {
+      font-weight: 400;
+      color: var(--red);
+    }
+
+    .intro {
+      margin-bottom: 26px;
+    }
+
+    .intro .eyebrow {
+      font-size: 14px;
+      margin: 0 0 8px;
+      color: var(--gray);
+    }
+
+    .headline {
+      font-size: 32px;
+      line-height: 1.25;
+      letter-spacing: -.65px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .headline b {
+      font-weight: 700;
+    }
+
+    .intro-note {
+      font-size: 15px;
+      color: var(--gray);
+      margin: 12px 0 0;
+    }
+
+    .benefits {
+      margin-top: 14px;
+      font-size: 15px;
+    }
+
+    .benefits summary {
+      color: var(--red);
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      border-radius: 4px;
+    }
+
+    .benefits summary::after {
+      content: '+';
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .benefits[open] summary::after {
+      content: '−';
+    }
+
+    .benefits summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .bullets {
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 6px 0 0;
+      padding: 12px 16px;
+      background: #fff;
+      border: 1px solid #e5e6e9;
+      border-radius: 12px;
+    }
+
+    .question-title {
+      display: block;
+      font-size: 27px;
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: -.4px;
+      margin: 0 0 12px;
+      outline: none;
+    }
+
+    .intro+.question-title {
+      font-size: 23px;
+    }
+
+    .question-help {
+      font-size: 15px;
+      color: var(--gray);
+      margin: 0 0 20px;
+    }
+
+    .required-mark {
+      display: none;
+    }
+
+    .field {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      min-height: 58px;
+      padding: 15px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--text);
+      font-size: 18px;
+      outline: none;
+      scroll-margin: 24px;
+    }
+
+    .field::placeholder {
+      color: #74777d;
+      opacity: 1;
+    }
+
+    .field:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px #d7192b14;
+    }
+
+    .field[aria-invalid=true] {
+      border-color: var(--red);
+    }
+
+    .phone-row {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .cc {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 16px;
+      padding: 0 13px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      white-space: nowrap;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      width: 100%;
+      min-height: 60px;
+      padding: 15px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.4;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+
+    .option::after {
+      content: '';
+      width: 19px;
+      height: 19px;
+      border: 1.5px solid #bfc2c8;
+      border-radius: 50%;
+      margin-left: auto;
+      flex: none;
+    }
+
+    .option.selected {
+      border-color: var(--red);
+      background: #fff1f3;
+    }
+
+    .option.selected::after {
+      border: 5px solid var(--red);
+      background: white;
+    }
+
+    .letter {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 26px;
+      height: 26px;
+      background: #f0f1f3;
+      border-radius: 5px;
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    .btn-row {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      min-height: 56px;
+      min-width: 180px;
+      padding: 14px 24px;
+      background: var(--red);
+      color: white;
+      border: 0;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn::after {
+      content: '→';
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .btn:disabled {
+      opacity: .65;
+      cursor: default;
+    }
+
+    .hint {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .hint b {
+      font-weight: 400;
+      border: 1px solid var(--border);
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    .nav-arrows {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 28px 28px;
+    }
+
+    .nav-arrows button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 8px 12px;
+      margin-left: -12px;
+      background: transparent;
+      border: 0;
+      border-radius: 8px;
+      color: var(--gray);
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .error-msg {
+      color: #b81222;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 10px;
+      display: none;
+    }
+
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 4px;
+    }
+
+    @media(hover:hover) {
+      .option:hover {
+        border-color: var(--red);
+        background: #fff8f9;
+      }
+
+      .btn:hover {
+        background: var(--red-dark);
+      }
+
+      .nav-arrows button:hover {
+        background: #eaecef;
+      }
+    }
+
+    @media(max-width:640px) {
+      .site-header {
+        padding: 20px 20px 0;
+        padding-top: max(20px, env(safe-area-inset-top));
+      }
+
+      .header-note {
+        font-size: 12px;
+      }
+
+      #progress-track {
+        margin: 16px 20px 0;
+      }
+
+      .step {
+        padding: 22px 20px 8px;
+      }
+
+      .step-count {
+        margin-bottom: 20px;
+      }
+
+      .headline {
+        font-size: clamp(24px, 6.9vw, 29px);
+        line-height: 1.24;
+      }
+
+      .intro {
+        margin-bottom: 22px;
+      }
+
+      .intro-note {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .intro .eyebrow {
+        font-size: 14px;
+      }
+
+      .benefits {
+        margin-top: 6px;
+        font-size: 14px;
+      }
+
+      .question-title {
+        font-size: 25px;
+        line-height: 1.3;
+      }
+
+      .intro+.question-title {
+        font-size: 21px;
+      }
+
+      .question-help {
+        font-size: 15px;
+        margin-bottom: 18px;
+      }
+
+      .field {
+        font-size: 17px;
+        min-height: 56px;
+      }
+
+      .btn-row {
+        margin-top: 16px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 56px;
+      }
+
+      .hint,
+      .letter {
+        display: none;
+      }
+
+      .option {
+        min-height: 58px;
+        font-size: 16px;
+      }
+
+      .nav-arrows {
+        padding: 12px 20px max(20px, env(safe-area-inset-bottom));
+      }
+    }
+
+    @media(max-height:500px) and (max-width:640px) {
+      .site-header {
+        padding-top: 12px;
+      }
+
+      .step {
+        padding-top: 16px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG68M2TS" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+  <header class="site-header">
+    <div class="brand"><strong>Gestão <span>iFood</span></strong> Delivery Elite</div>
+  </header>
+  <div id="progress-track" role="progressbar" aria-label="Progresso do formulário" aria-valuemin="0" aria-valuemax="6"
+    aria-valuenow="0">
+    <div id="progress-bar"></div>
+  </div>
+  <main id="steps-container"></main>
+
+  <div class="nav-arrows">
+    <button id="prevBtn" title="Passo anterior" aria-label="Voltar à pergunta anterior">← Voltar</button>
+    <button id="nextBtn" title="Próxima etapa">&#8250;</button>
+  </div>
+
+  <script>
+    /* ENTREGA AO TECH: layout aprovado + GTM restaurado.
+       O botão final abre o WhatsApp (wa.me), igual à v1.
+       O evento "lead_qualificado" é disparado no dataLayer assim que a pessoa
+       responde a pergunta de faturamento total (penúltima etapa) — é o gatilho
+       pro webhook/tag do GTM capturar o lead, sem esperar o fim do formulário.
+       Não usar quiz_step como conversão de lead. */
+    /* =========================================================
+       CONFIGURAÇÃO DO FUNIL — edite aqui título, perguntas, opções
+       ========================================================= */
+    const WHATSAPP_NUMBER = "551936287413"; // WABA oficial Eric Gestão Delivery Elite
+
+    const steps = [
+      {
+        "type": "text",
+        "key": "nome",
+        "question": "Como podemos te chamar?",
+        "placeholder": "Seu nome",
+        "required": true,
+        "intro": "<p class=\"eyebrow\">Muito prazer, sou o Éric.</p><div class=\"headline\">Vamos transformar sua loja no iFood em uma <b>máquina de vendas.</b></div><p class=\"intro-note\">Para empresários que já têm uma loja no iFood.</p><details class=\"benefits\"><summary>Como podemos ajudar</summary><div class=\"bullets\"><div>🧠 Fazer o algoritmo trabalhar a seu favor.</div><div>🚀 Ampliar suas visualizações.</div><div>📝 Criar um cardápio lucrativo.</div><div>💰 Ajudar sua loja a faturar mais.</div></div></details>"
+      },
+      {
+        "type": "phone",
+        "key": "whatsapp",
+        "question": "Qual é o seu WhatsApp?",
+        "placeholder": "(11) 98765-4321",
+        "required": true
+      },
+      {
+        "type": "choice",
+        "key": "papel",
+        "question": "Qual é o seu papel no negócio?",
+        "placeholder": "Digite sua resposta aqui...",
+        "required": true,
+        "options": [
+          "Dono",
+          "Gerente",
+          "Outro"
+        ]
+      },
+      {
+        "type": "choice",
+        "key": "modelo",
+        "question": "O que melhor define seu modelo?",
+        "required": true,
+        "options": [
+          "Restaurante /Bar",
+          "Delivery / Dark Kitchen",
+          "Café / Doceria",
+          "Franquia",
+          "Outro"
+        ]
+      },
+      {
+        "type": "choice",
+        "key": "faturamento_ifood",
+        "question": "Qual a média de faturamento mensal no iFood hoje?",
+        "required": true,
+        "options": [
+          "Até R$20 mil",
+          "R$ 20 mil a R$ 50 mil",
+          "R$ 50 mil a R$ 100 mil",
+          "Acima de R$100 mil"
+        ]
+      },
+      {
+        "type": "choice",
+        "key": "faturamento",
+        "question": "Qual a média de faturamento mensal total hoje?",
+        "required": true,
+        "options": [
+          "Até R$20 mil",
+          "R$ 20 mil a R$ 50 mil",
+          "R$ 50 mil a R$ 100 mil",
+          "Acima de R$100 mil"
+        ]
+      },
+      {
+        "type": "ending",
+        "html": "<div class=\"headline\">Obrigado por preencher o formulário.<br>O mais breve possível a equipe do Gestão Ifood entrará em contato.</div>\n    <div class=\"bullets\" style=\"margin-top:18px;\">Caso queira adiantar seu contato agora, agora é só clicar no botão abaixo e nos chamar no WhatsApp.</div>",
+        "buttonLabel": "Enviar Mensagem"
+      }
+    ];
+
+    /* ========================================================= */
+
+    // Rascunho local do progresso do formulário (recuperado se a pessoa voltar em até 24h).
+    // O envio do lead ao dataLayer é separado: acontece em pushLeadEvent(), na pergunta de faturamento.
+    const DRAFT_COOKIE = 'delivery_elite_cadastro_v2';
+    const DRAFT_MAX_AGE = 86400; // 24 horas após a última edição.
+    let draftPersisted = false;
+
+    function sanitizeDraftAnswers(raw) {
+      const clean = {};
+      if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return clean;
+      for (const step of steps) {
+        if (!step.key || typeof raw[step.key] !== 'string') continue;
+        const value = raw[step.key];
+        if (step.type === 'choice') {
+          if (step.options.includes(value)) clean[step.key] = value;
+        } else if (value.length <= (step.type === 'phone' ? 40 : 160)) {
+          clean[step.key] = value;
+        }
+      }
+      return clean;
+    }
+
+    function readDraftCookie() {
+      try {
+        const row = document.cookie.split(';').map(s => s.trim()).find(s => s.startsWith(DRAFT_COOKIE + '='));
+        if (!row) return {};
+        const draft = JSON.parse(decodeURIComponent(row.slice(DRAFT_COOKIE.length + 1)));
+        if (draft.version !== 2 || !Number.isFinite(draft.updatedAt) ||
+          Date.now() - draft.updatedAt > DRAFT_MAX_AGE * 1000 || draft.updatedAt > Date.now() + 60000) return {};
+        return sanitizeDraftAnswers(draft.answers);
+      } catch { return {}; }
+    }
+
+    function saveDraftCookie() {
+      try {
+        const value = encodeURIComponent(JSON.stringify({ version: 2, updatedAt: Date.now(), answers: sanitizeDraftAnswers(answers) }));
+        const secure = location.protocol === 'https:' ? '; Secure' : '';
+        document.cookie = DRAFT_COOKIE + '=' + value + '; Max-Age=' + DRAFT_MAX_AGE + '; Path=/; SameSite=Lax' + secure;
+        draftPersisted = document.cookie.split(';').some(s => s.trim() === DRAFT_COOKIE + '=' + value);
+      } catch { draftPersisted = false; }
+      return draftPersisted;
+    }
+
+    function clearDraftCookie() {
+      try {
+        document.cookie = DRAFT_COOKIE + '=; Max-Age=0; Path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
+      } catch { /* A página continua funcionando se cookies estiverem bloqueados. */ }
+      draftPersisted = false;
+    }
+
+    function resumeDraftStep() {
+      for (let i = 0; i < steps.length - 1; i++) {
+        const s = steps[i], value = answers[s.key];
+        if (!value || !value.trim()) return i;
+        if (s.type === 'phone' && !/^\d{10,11}$/.test(value.replace(/\D/g, ''))) return i;
+      }
+      // Não mostrar confirmação de envio só porque existe um rascunho completo.
+      return steps.length - 2;
+    }
+
+    const answers = readDraftCookie();
+    let current = resumeDraftStep();
+    window.deliveryEliteFormDraft = Object.freeze({
+      cookieName: DRAFT_COOKIE,
+      getAnswers: () => sanitizeDraftAnswers(answers),
+      getCookieAnswers: readDraftCookie,
+      clear: clearDraftCookie,
+      isPersisted: () => draftPersisted
+    });
+
+    const container = document.getElementById("steps-container");
+    const progressBar = document.getElementById("progress-bar");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function letterFor(i) { return String.fromCharCode(65 + i); }
+
+    function trackStep(index) {
+      const s = steps[index];
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "quiz_step",
+        step_number: index + 1,
+        step_total: steps.length,
+        step_key: s.key || s.type,
+        step_question: s.question || s.buttonLabel || ""
+      });
+    }
+
+    function renderStep(index) {
+      container.innerHTML = "";
+      const s = steps[index];
+      trackStep(index);
+      const wrap = document.createElement("div");
+      wrap.className = "step active";
+
+      let inner = `<div class="step-inner">`;
+
+      if (s.type === "welcome" || s.type === "ending") {
+        inner += s.html;
+        inner += `<div class="btn-row">
       <button class="btn" id="mainBtn">${s.buttonLabel}</button>
       <span class="hint">Pressione <b>Enter</b> &#8629;</span>
     </div>`;
-  } else {
-    inner += `<div class="step-count"><span>Pergunta <b>${index+1}</b> de ${steps.length-1}</span>${s.type === "choice" ? "<span>Toque para escolher</span>" : ""}</div>`;
-    if(s.intro) inner += `<div class="intro">${s.intro}</div>`;
-    inner += `<h1 class="question-title" id="questionTitle" tabindex="-1">${s.question}${s.required ? '<span class="required-mark">*</span>' : ''}</h1>`;
-    if(s.type === "phone") inner += `<p class="question-help">Inclua o DDD. Nossa equipe vai falar com você por lá.</p>`;
+      } else {
+        inner += `<div class="step-count"><span>Pergunta <b>${index + 1}</b> de ${steps.length - 1}</span>${s.type === "choice" ? "<span>Toque para escolher</span>" : ""}</div>`;
+        if (s.intro) inner += `<div class="intro">${s.intro}</div>`;
+        inner += `<h1 class="question-title" id="questionTitle" tabindex="-1">${s.question}${s.required ? '<span class="required-mark">*</span>' : ''}</h1>`;
+        if (s.type === "phone") inner += `<p class="question-help">Inclua o DDD. Nossa equipe vai falar com você por lá.</p>`;
 
-    if(s.type === "text" || s.type === "email"){
-      inner += `<input class="field" id="fieldInput" maxlength="160" autocomplete="given-name" type="${s.type === 'email' ? 'email' : 'text'}" placeholder="${s.placeholder}" aria-labelledby="questionTitle" aria-describedby="errorMsg" aria-required="true" enterkeyhint="next">`;
-    }
+        if (s.type === "text" || s.type === "email") {
+          inner += `<input class="field" id="fieldInput" maxlength="160" autocomplete="given-name" type="${s.type === 'email' ? 'email' : 'text'}" placeholder="${s.placeholder}" aria-labelledby="questionTitle" aria-describedby="errorMsg" aria-required="true" enterkeyhint="next">`;
+        }
 
-    if(s.type === "phone"){
-      inner += `<div class="phone-row">
+        if (s.type === "phone") {
+          inner += `<div class="phone-row">
         <div class="cc">🇧🇷 +55</div>
         <input class="field" id="fieldInput" type="tel" maxlength="40" inputmode="tel" autocomplete="tel-national" placeholder="${s.placeholder}" aria-labelledby="questionTitle" aria-describedby="errorMsg" aria-required="true" enterkeyhint="next">
       </div>`;
-    }
+        }
 
-    if(s.type === "choice"){
-      inner += `<div class="options">`;
-      s.options.forEach((opt, i) => {
-        const selected = answers[s.key] === opt ? "selected" : "";
-        inner += `<button type="button" class="option ${selected}" data-value="${opt}" data-index="${i}">
+        if (s.type === "choice") {
+          inner += `<div class="options">`;
+          s.options.forEach((opt, i) => {
+            const selected = answers[s.key] === opt ? "selected" : "";
+            inner += `<button type="button" class="option ${selected}" data-value="${opt}" data-index="${i}">
           <span class="letter" aria-hidden="true">${letterFor(i)}</span>
           <span>${opt}</span>
         </button>`;
-      });
-      inner += `</div>`;
-    }
+          });
+          inner += `</div>`;
+        }
 
-    inner += `<div class="error-msg" role="alert" id="errorMsg">Esta etapa é necessária</div>`;
-    if(s.type !== "choice") inner += `<div class="btn-row">
+        inner += `<div class="error-msg" role="alert" id="errorMsg">Esta etapa é necessária</div>`;
+        if (s.type !== "choice") inner += `<div class="btn-row">
       <button class="btn" id="mainBtn">Continuar</button>
       <span class="hint">Pressione <b>Enter</b> &#8629;</span>
     </div>`;
-  }
+      }
 
-  inner += `</div>`;
-  wrap.innerHTML = inner;
-  container.appendChild(wrap);
+      inner += `</div>`;
+      wrap.innerHTML = inner;
+      container.appendChild(wrap);
 
-  window.scrollTo({top:0,behavior:"instant"});
-  if(s.type === "choice") document.getElementById("questionTitle").focus({preventScroll:true});
-  updateProgress();
-  updateNavButtons();
+      window.scrollTo({ top: 0, behavior: "instant" });
+      if (s.type === "choice") document.getElementById("questionTitle").focus({ preventScroll: true });
+      updateProgress();
+      updateNavButtons();
 
-  const mainBtn = document.getElementById("mainBtn");
-  mainBtn?.addEventListener("click", () => advance());
+      const mainBtn = document.getElementById("mainBtn");
+      mainBtn?.addEventListener("click", () => advance());
 
-  const fieldInput = document.getElementById("fieldInput");
-  if(fieldInput){
-    fieldInput.value = answers[s.key] || "";
-    if(index > 0 && !window.matchMedia("(pointer: coarse)").matches) fieldInput.focus({preventScroll:true});
-    fieldInput.addEventListener("change", () => { answers[s.key]=fieldInput.value;saveDraftCookie();pushFieldToDataLayer(s.key,fieldInput.value); });
-    fieldInput.addEventListener("input", () => {
-      answers[s.key] = fieldInput.value;
-      saveDraftCookie();
-      fieldInput.removeAttribute("aria-invalid");
-      document.getElementById("errorMsg").style.display="none";
-    });
-  }
+      const fieldInput = document.getElementById("fieldInput");
+      if (fieldInput) {
+        fieldInput.value = answers[s.key] || "";
+        if (index > 0 && !window.matchMedia("(pointer: coarse)").matches) fieldInput.focus({ preventScroll: true });
+        fieldInput.addEventListener("change", () => { answers[s.key] = fieldInput.value; saveDraftCookie(); });
+        fieldInput.addEventListener("input", () => {
+          answers[s.key] = fieldInput.value;
+          saveDraftCookie();
+          fieldInput.removeAttribute("aria-invalid");
+          document.getElementById("errorMsg").style.display = "none";
+        });
+      }
 
-  const options = wrap.querySelectorAll(".option");
-  options.forEach(opt => {
-    opt.addEventListener("click", () => selectOption(s, opt, options));
-  });
-}
-
-function selectOption(step, optEl, allOpts){
-  allOpts.forEach(o => o.classList.remove("selected"));
-  optEl.classList.add("selected");
-  answers[step.key] = optEl.dataset.value;
-  saveDraftCookie();
-  pushFieldToDataLayer(step.key, optEl.dataset.value);
-  const isLastQuestion = steps[current+1] && steps[current+1].type === "ending";
-  if(isLastQuestion) pushLeadWebhook();
-  advance();
-}
-
-function validateCurrent(){
-  const s = steps[current];
-  if(s.type === "welcome" || s.type === "ending") return true;
-  if(!s.required) return true;
-  const val = answers[s.key];
-  let ok = Boolean(val && val.toString().trim().length > 0);
-  if(s.type === 'phone') ok = /^\d{10,11}$/.test(String(val || '').replace(/\D/g,''));
-  const errEl = document.getElementById("errorMsg");
-  if(errEl){errEl.textContent=s.type === 'phone' ? 'Informe um telefone com DDD, com 10 ou 11 dígitos.' : 'Preencha seu nome para continuar.';errEl.style.display=ok ? 'none' : 'block';}
-  const input=document.getElementById('fieldInput');
-  if(input){input.setAttribute('aria-invalid',String(!ok));if(!ok) input.focus();}
-  return ok;
-}
-
-function advance(){
-  const s = steps[current];
-  if(s.type !== "welcome" && s.type !== "ending"){
-    const fieldInput = document.getElementById("fieldInput");
-    if(fieldInput){answers[s.key] = fieldInput.value;saveDraftCookie();pushFieldToDataLayer(s.key,fieldInput.value);}
-  }
-
-  if(s.type === "ending"){
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}`, "_blank");
-    return;
-  }
-
-  if(!validateCurrent()) return;
-
-  if(current < steps.length - 1){
-    current++;
-    renderStep(current);
-  }
-}
-
-function goBack(){
-  if(current > 0){
-    current--;
-    renderStep(current);
-  }
-}
-
-function updateProgress(){
-  const pct = Math.round((current / (steps.length - 1)) * 100);
-  progressBar.style.width = pct + "%";
-  document.getElementById("progress-track").setAttribute("aria-valuenow",String(Math.min(current,6)));
-}
-
-function updateNavButtons(){
-  prevBtn.disabled = current === 0;
-  prevBtn.hidden = current === 0;
-  nextBtn.disabled = current === steps.length - 1;
-  nextBtn.hidden = true;
-}
-
-prevBtn.addEventListener("click", goBack);
-nextBtn.addEventListener("click", () => { if(validateCurrent()) advance(); });
-
-document.addEventListener("keydown", (e) => {
-  const s = steps[current];
-
-  if(e.repeat || e.ctrlKey || e.altKey || e.metaKey) return;
-  if(e.target.closest('button, summary, a') && (e.key === "Enter" || e.key === " ")) return;
-  if(e.key === "Enter"){
-    e.preventDefault();
-    advance();
-    return;
-  }
-
-  if(s.type === "choice"){
-    const letter = e.key.toUpperCase();
-    const idx = letter.charCodeAt(0) - 65;
-    if(e.key.length === 1 && idx >= 0 && idx < s.options.length){
-      e.preventDefault();
-      const optEls = document.querySelectorAll(".option");
-      selectOption(s, optEls[idx], optEls);
+      const options = wrap.querySelectorAll(".option");
+      options.forEach(opt => {
+        opt.addEventListener("click", () => selectOption(s, opt, options));
+      });
     }
-  }
-});
 
-window.addEventListener('pagehide', () => {
-  const s=steps[current], field=document.getElementById('fieldInput');
-  if(field && s.key) answers[s.key]=field.value;
-  if(Object.keys(answers).length) saveDraftCookie();
-});
-renderStep(current);
-</script>
+    // Dispara uma única vez, assim que o faturamento total é respondido —
+    // ponto em que já há dado suficiente pra qualificar o lead e o webhook
+    // (tag do GTM escutando o evento "lead_qualificado") pode disparar.
+    let leadSent = false;
+    function pushLeadEvent() {
+      if (leadSent) return;
+      leadSent = true;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "lead_qualificado",
+        lead_nome: answers.nome || "",
+        lead_whatsapp: answers.whatsapp || "",
+        lead_papel: answers.papel || "",
+        lead_modelo: answers.modelo || "",
+        lead_faturamento_ifood: answers.faturamento_ifood || "",
+        lead_faturamento: answers.faturamento || ""
+      });
+    }
+
+    function selectOption(step, optEl, allOpts) {
+      allOpts.forEach(o => o.classList.remove("selected"));
+      optEl.classList.add("selected");
+      answers[step.key] = optEl.dataset.value;
+      saveDraftCookie();
+      if (step.key === "faturamento") pushLeadEvent();
+      advance();
+    }
+
+    function validateCurrent() {
+      const s = steps[current];
+      if (s.type === "welcome" || s.type === "ending") return true;
+      if (!s.required) return true;
+      const val = answers[s.key];
+      let ok = Boolean(val && val.toString().trim().length > 0);
+      if (s.type === 'phone') ok = /^\d{10,11}$/.test(String(val || '').replace(/\D/g, ''));
+      const errEl = document.getElementById("errorMsg");
+      if (errEl) { errEl.textContent = s.type === 'phone' ? 'Informe um telefone com DDD, com 10 ou 11 dígitos.' : 'Preencha seu nome para continuar.'; errEl.style.display = ok ? 'none' : 'block'; }
+      const input = document.getElementById('fieldInput');
+      if (input) { input.setAttribute('aria-invalid', String(!ok)); if (!ok) input.focus(); }
+      return ok;
+    }
+
+    function advance() {
+      const s = steps[current];
+      if (s.type !== "welcome" && s.type !== "ending") {
+        const fieldInput = document.getElementById("fieldInput");
+        if (fieldInput) { answers[s.key] = fieldInput.value; saveDraftCookie(); }
+      }
+
+      if (s.type === "ending") {
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}`, "_blank");
+        return;
+      }
+
+      if (!validateCurrent()) return;
+
+      if (current < steps.length - 1) {
+        current++;
+        renderStep(current);
+      }
+    }
+
+    function goBack() {
+      if (current > 0) {
+        current--;
+        renderStep(current);
+      }
+    }
+
+    function updateProgress() {
+      const pct = Math.round((current / (steps.length - 1)) * 100);
+      progressBar.style.width = pct + "%";
+      document.getElementById("progress-track").setAttribute("aria-valuenow", String(Math.min(current, 6)));
+    }
+
+    function updateNavButtons() {
+      prevBtn.disabled = current === 0;
+      prevBtn.hidden = current === 0;
+      nextBtn.disabled = current === steps.length - 1;
+      nextBtn.hidden = true;
+    }
+
+    prevBtn.addEventListener("click", goBack);
+    nextBtn.addEventListener("click", () => { if (validateCurrent()) advance(); });
+
+    document.addEventListener("keydown", (e) => {
+      const s = steps[current];
+
+      if (e.repeat || e.ctrlKey || e.altKey || e.metaKey) return;
+      if (e.target.closest('button, summary, a') && (e.key === "Enter" || e.key === " ")) return;
+      if (e.key === "Enter") {
+        e.preventDefault();
+        advance();
+        return;
+      }
+
+      if (s.type === "choice") {
+        const letter = e.key.toUpperCase();
+        const idx = letter.charCodeAt(0) - 65;
+        if (e.key.length === 1 && idx >= 0 && idx < s.options.length) {
+          e.preventDefault();
+          const optEls = document.querySelectorAll(".option");
+          selectOption(s, optEls[idx], optEls);
+        }
+      }
+    });
+
+    window.addEventListener('pagehide', () => {
+      const s = steps[current], field = document.getElementById('fieldInput');
+      if (field && s.key) answers[s.key] = field.value;
+      if (Object.keys(answers).length) saveDraftCookie();
+    });
+    renderStep(current);
+  </script>
 </body>
+
 </html>
