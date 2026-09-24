@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delivery Elite | Gestão de delivery no iFood, 99 e Keeta</title>
+<meta name="description" content="A Delivery Elite, de Eric Rodrigues Rosa, aplica gestão de delivery em mais de 500 restaurantes no iFood, 99 e Keeta. Conheça o método e todos os produtos.">
+<meta name="theme-color" content="#41000b">
+<link rel="icon" href="/static/img/logo-mark.png" type="image/png">
+<link rel="apple-touch-icon" href="/static/img/logo-mark.png">
+<meta property="og:title" content="Delivery Elite | Gestão de delivery no iFood, 99 e Keeta">
+<meta property="og:description" content="Método de gestão de delivery aplicado em mais de 500 restaurantes. Conheça o Eric e todos os produtos da Delivery Elite.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/static/img/foto-eric.webp">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WG68M2TS');</script>
+<script src="/static/tracking.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --red:#ec0920; --red-dark:#a90518; --red-deep:#41000b; --ink:#171116; --muted:#6c6265; --paper:#fffdfd; --line:#eadfe1; --shadow:0 22px 65px rgba(49,0,8,.12); }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; scroll-padding-top:20px; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'DM Sans',Arial,sans-serif; overflow-x:hidden; }
+  a { color:inherit; }
+  img { display:block; max-width:100%; }
+  .wrap { width:min(1160px, calc(100% - 40px)); margin:0 auto; }
+  .eyebrow { display:flex; align-items:center; gap:10px; margin:0 0 18px; color:var(--red); font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
+  .eyebrow::before { content:''; width:30px; height:3px; border-radius:10px; background:currentColor; }
+  .section-title { max-width:700px; margin:0; font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(30px,3.6vw,50px); line-height:1.02; letter-spacing:-.05em; }
+  .section-title em { color:var(--red); font-style:normal; }
+  .section-lead { max-width:680px; margin:20px 0 0; color:var(--muted); font-size:17px; line-height:1.65; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:56px; padding:0 27px; border:1px solid transparent; border-radius:99px; background:var(--red); color:#fff; font-size:15px; font-weight:700; text-decoration:none; box-shadow:0 12px 30px rgba(236,9,32,.25); transition:transform .2s ease, box-shadow .2s ease, background .2s ease; }
+  .btn:hover { background:#c9071c; box-shadow:0 16px 35px rgba(236,9,32,.32); transform:translateY(-2px); }
+  .btn--light { background:#fff; color:var(--red); box-shadow:0 14px 30px rgba(0,0,0,.16); }
+  .btn--light:hover { background:#fff4f5; }
+
+  .hero { position:relative; padding:120px 0 0; background:var(--red-deep); color:#fff; overflow:hidden; }
+  .hero::after { content:''; position:absolute; right:-120px; top:-160px; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle,rgba(236,9,32,.55),transparent 70%); }
+  .hero-nav { position:absolute; inset:0 0 auto; z-index:2; display:flex; justify-content:space-between; align-items:center; padding:26px 0; }
+  .hero-nav img { height:60px; }
+  .hero-nav a { color:#fff; font-size:13px; font-weight:700; text-decoration:none; }
+  .hero-content { position:relative; z-index:1; max-width:760px; margin:40px auto 90px; text-align:center; }
+  .hero-tag { display:inline-flex; margin:0 auto 22px; padding:8px 16px; border:1px solid rgba(255,255,255,.35); border-radius:99px; color:#ffd4d8; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+  h1 { margin:0 auto; font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(36px,4.6vw,58px); line-height:1.03; letter-spacing:-.045em; }
+  h1 span { color:#ffbdc3; }
+  .hero-content p { max-width:580px; margin:24px auto 34px; color:#ffe9eb; font-size:18px; line-height:1.6; }
+  .hero-marquee { display:block; width:100%; overflow:hidden; background:#fff; color:var(--red); font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+  .hero-marquee-track { display:flex; width:max-content; padding:15px 0; animation:hero-marquee-move 26s linear infinite; }
+  .hero-marquee span { padding:0 24px; }
+  @keyframes hero-marquee-move { to { transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .hero-marquee-track { animation:none; } html { scroll-behavior:auto; } }
+
+  .sobre { padding:110px 0; background:#fff; }
+  .sobre-grid { display:grid; grid-template-columns:minmax(320px,.85fr) 1.15fr; gap:clamp(45px,7vw,100px); align-items:center; }
+  .sobre-photo { position:relative; padding:14px; background:linear-gradient(135deg,var(--red),#ffb8bd); box-shadow:0 24px 55px rgba(236,9,32,.16); }
+  .sobre-photo img { width:100%; aspect-ratio:1/1.12; object-fit:cover; }
+  .sobre-copy h2 { margin:0 0 18px; font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(26px,3vw,40px); letter-spacing:-.04em; }
+  .sobre-copy p { color:var(--muted); font-size:16px; line-height:1.7; margin:0 0 16px; }
+  .numeros { display:flex; flex-wrap:wrap; gap:36px; margin-top:30px; padding-top:26px; border-top:1px solid var(--line); }
+  .numero strong { display:block; font-family:'Space Grotesk',Arial,sans-serif; font-size:34px; letter-spacing:-.04em; color:var(--red); }
+  .numero span { color:var(--muted); font-size:13px; }
+
+  .metodo { padding:110px 0; background:var(--red-deep); color:#fff; }
+  .metodo .eyebrow { color:#ff9ba5; justify-content:center; }
+  .metodo-head { text-align:center; }
+  .metodo-head .section-title { max-width:640px; margin:0 auto; color:#fff; }
+  .metodo-head .section-lead { max-width:620px; margin:20px auto 0; color:#ffd4d8; }
+  .metodo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:54px; }
+  .metodo-item { padding:26px; border:1px solid rgba(255,255,255,.18); border-radius:16px; }
+  .metodo-item strong { display:block; margin-bottom:10px; color:#ffbdc3; font-family:'Space Grotesk',Arial,sans-serif; font-size:13px; letter-spacing:.1em; text-transform:uppercase; }
+  .metodo-item p { margin:0; color:#ffe9eb; font-size:15px; line-height:1.55; }
+
+  .produtos { padding:110px 0; background:#fafafa; }
+  .produtos-head { text-align:center; }
+  .produtos-head .eyebrow { justify-content:center; }
+  .produtos-head .section-title { max-width:660px; margin:0 auto; }
+  .produtos-head .section-lead { max-width:620px; margin:20px auto 0; }
+  .trilha { margin-top:64px; }
+  .trilha + .trilha { margin-top:70px; }
+  .trilha-titulo { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:0 0 8px; font-family:'Space Grotesk',Arial,sans-serif; font-size:23px; letter-spacing:-.03em; }
+  .trilha-titulo span { color:var(--red); font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+  .trilha-lead { margin:0 0 30px; color:var(--muted); font-size:15px; line-height:1.6; }
+  .produtos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .produto { display:flex; flex-direction:column; padding:28px; border-radius:18px; background:#fff; box-shadow:0 12px 30px rgba(65,0,11,.08); text-decoration:none; transition:transform .2s ease, box-shadow .2s ease; }
+  .produto:hover { transform:translateY(-4px); box-shadow:0 20px 42px rgba(65,0,11,.14); }
+  .produto-tipo { margin:0 0 12px; color:var(--red); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+  .produto h4 { margin:0 0 12px; font-family:'Space Grotesk',Arial,sans-serif; font-size:21px; line-height:1.15; letter-spacing:-.03em; }
+  .produto p { flex:1; margin:0 0 22px; color:var(--muted); font-size:14px; line-height:1.6; }
+  .produto-rodape { display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top:18px; border-top:1px solid var(--line); }
+  .produto-preco { font-family:'Space Grotesk',Arial,sans-serif; font-size:26px; letter-spacing:-.03em; }
+  .produto-preco small { margin-right:3px; font-size:14px; color:var(--muted); }
+  /* preco antes/depois: o "de" fica em cima, pequeno e riscado, pra nao competir
+     com o valor que a pessoa realmente paga */
+  .produto-antes { display:block; font-family:'DM Sans',Arial,sans-serif; font-size:13px; font-weight:500; letter-spacing:0; color:var(--muted); text-decoration:line-through; }
+  .produto-avista { margin-left:6px; font-family:'DM Sans',Arial,sans-serif; font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--red); }
+  .produto-link { color:var(--red); font-size:14px; font-weight:700; }
+
+  /* renda extra: bloco de apoio da trilha 2, foco declarado do Eric */
+  .renda-extra { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:0 0 30px; }
+  .renda-item { padding:18px 20px; border-radius:14px; background:#fff; border:1px solid var(--line); }
+  .renda-item strong { display:block; margin-bottom:6px; font-family:'Space Grotesk',Arial,sans-serif; font-size:15px; letter-spacing:-.02em; }
+  .renda-item span { color:var(--muted); font-size:13px; line-height:1.55; }
+
+  .depoimentos-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; max-width:1040px; margin:54px auto 0; align-items:start; }
+  .depoimento-card { padding:14px; border-radius:16px; background:#fafafa; box-shadow:0 12px 30px rgba(65,0,11,.08); }
+  /* aspect-ratio reserva a altura certa: com preload="none" o navegador nao
+     conhece a proporcao e chutaria 150px, fazendo a pagina pular no play */
+  .depoimento-card video { width:100%; border-radius:10px; aspect-ratio:9/16; background:#111; object-fit:cover; }
+
+  .provas { padding:110px 0; background:#fff; text-align:center; }
+  .provas .eyebrow { justify-content:center; }
+  .provas .section-title { max-width:none; margin:0 auto; font-size:clamp(28px,3.2vw,42px); }
+  .provas-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; max-width:1040px; margin:22px auto 0; }
+  .prova-card { padding:10px; border-radius:16px; background:#fafafa; box-shadow:0 12px 30px rgba(65,0,11,.08); }
+  .prova-card img { width:100%; aspect-ratio:1170/983; object-fit:cover; border-radius:10px; }
+  .provas-nota { max-width:720px; margin:30px auto 0; color:var(--muted); font-size:12px; line-height:1.6; }
+
+  .fechamento { padding:100px 0; background:var(--red); color:#fff; text-align:center; }
+  .fechamento h2 { max-width:660px; margin:0 auto 18px; font-family:'Space Grotesk',Arial,sans-serif; font-size:clamp(28px,3.4vw,44px); line-height:1.08; letter-spacing:-.04em; }
+  .fechamento p { max-width:560px; margin:0 auto 32px; color:#ffe4e7; font-size:17px; line-height:1.6; }
+
+  footer { padding:36px 0; background:var(--red-deep); color:#ffd4d8; font-size:12px; text-align:center; line-height:1.7; }
+
+  @media (max-width:980px) {
+    .metodo-grid { grid-template-columns:repeat(2,1fr); }
+    .produtos-grid { grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:760px) {
+    .sobre-grid { grid-template-columns:1fr; }
+    .metodo-grid, .produtos-grid { grid-template-columns:1fr; }
+    .provas-grid { grid-template-columns:1fr; max-width:420px; margin-left:auto; margin-right:auto; }
+    .renda-extra { grid-template-columns:1fr; }
+    .depoimentos-grid { grid-template-columns:1fr; max-width:380px; }
+    .numeros { gap:24px; }
+  }
+</style>
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG68M2TS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <section class="hero">
+    <div class="wrap hero-nav">
+      <img src="/static/img/logo-mark.png" alt="Delivery Elite">
+      <a href="#produtos" data-cta="topo_menu" onclick="trackCTA('topo_menu')">Ver produtos &#8250;</a>
+    </div>
+    <div class="wrap hero-content">
+      <span class="hero-tag">Delivery Elite</span>
+      <h1>Gestão de delivery aplicada em mais de <span>500 restaurantes</span></h1>
+      <p>A Delivery Elite trabalha cardápio, fotos, palavras chave e anúncios dentro do iFood, 99 e Keeta. Conheça o método, quem está por trás e por onde você pode começar.</p>
+      <a href="#produtos" class="btn btn--light" data-cta="hero" onclick="trackCTA('hero')">Conhecer os produtos &#8250;</a>
+    </div>
+    <div class="hero-marquee">
+      <div class="hero-marquee-track">
+        <span>MAIS DE 500 RESTAURANTES ATENDIDOS</span><span>IFOOD, 99 E KEETA</span><span>MÉTODO VALIDADO NA PRÁTICA</span><span>MAIS DE 500 RESTAURANTES ATENDIDOS</span><span>IFOOD, 99 E KEETA</span><span>MÉTODO VALIDADO NA PRÁTICA</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sobre" id="eric">
+    <div class="wrap sobre-grid">
+      <div class="sobre-photo"><img src="/static/img/foto-eric.webp" alt="Eric Rodrigues Rosa, fundador da Delivery Elite" loading="lazy"></div>
+      <div class="sobre-copy">
+        <div class="eyebrow">Quem está por trás</div>
+        <h2>Eric Rodrigues Rosa</h2>
+        <p>Especialista em gestão de delivery e fundador da Delivery Elite. O trabalho dele não é ter restaurante, é fazer a operação de quem já tem performar melhor dentro dos aplicativos.</p>
+        <p>O método nasceu na prática, ajustando cardápio, fotos, descrições, preço, palavras chave e anúncios loja por loja, até virar um processo que pode ser repetido e ensinado.</p>
+        <p>Hoje esse mesmo método é aplicado em mais de 500 restaurantes e também é ensinado para quem quer atuar como gestor de delivery.</p>
+        <div class="numeros">
+          <div class="numero"><strong>500+</strong><span>restaurantes atendidos</span></div>
+          <div class="numero"><strong>3</strong><span>plataformas: iFood, 99 e Keeta</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metodo">
+    <div class="wrap">
+      <div class="metodo-head">
+        <div class="eyebrow">O que a Delivery Elite faz</div>
+        <h2 class="section-title">Quatro frentes que decidem se a sua loja vende</h2>
+        <p class="section-lead">O cliente abre o aplicativo, vê dezenas de lojas e escolhe uma. O trabalho está em cada detalhe dessa decisão.</p>
+      </div>
+      <div class="metodo-grid">
+        <div class="metodo-item"><strong>Cardápio</strong><p>Fotos, nomes, descrições e organização que deixam a escolha mais fácil pra quem está com fome.</p></div>
+        <div class="metodo-item"><strong>Preço</strong><p>Precificação trabalhada com atenção à margem e à decisão de compra, não no chute.</p></div>
+        <div class="metodo-item"><strong>Visibilidade</strong><p>Palavras chave, posicionamento e algoritmo, para a loja aparecer nas buscas dentro do app.</p></div>
+        <div class="metodo-item"><strong>Recompra</strong><p>Estratégias para transformar quem pediu uma vez em cliente que volta.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="produtos" id="produtos">
+    <div class="wrap">
+      <div class="produtos-head">
+        <div class="eyebrow">Por onde começar</div>
+        <h2 class="section-title">Dois caminhos, dependendo de <em>onde você está</em></h2>
+        <p class="section-lead">Você já tem uma loja no delivery e quer vender mais, ou quer usar esse conhecimento como uma nova fonte de renda. Cada caminho tem um ponto de entrada diferente.</p>
+      </div>
+
+      <div class="trilha">
+        <h3 class="trilha-titulo">Para quem tem loja no delivery <span>Caminho 1</span></h3>
+        <p class="trilha-lead">Do material de entrada ao acompanhamento ao vivo, conforme o quanto você quer de proximidade.</p>
+        <div class="produtos-grid">
+          <a class="produto" href="/mvp-curso-ifood-47" data-cta="produto_curso_47" onclick="trackCTA('produto_curso_47')">
+            <p class="produto-tipo">Curso + ebook</p>
+            <h4>Curso iFood e ebook com 50 dicas</h4>
+            <p>Aula prática de criação de cardápio mais um ebook com 50 dicas de SEO, atendimento e gestão de avaliações. O ponto de entrada mais direto.</p>
+            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$97</span><small>R$</small>47</span><span class="produto-link">Ver página &#8250;</span></div>
+          </a>
+          <a class="produto" href="/analise-de-loja-gravada" data-cta="produto_analise_297" onclick="trackCTA('produto_analise_297')">
+            <p class="produto-tipo">Diagnóstico</p>
+            <h4>Análise gravada da sua loja</h4>
+            <p>Uma análise gravada e personalizada da sua loja no iFood, com diagnóstico do que está travando as vendas e um plano prático do que ajustar.</p>
+            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$368,16 em 12x</span><small>R$</small>297<span class="produto-avista">à vista</span></span><span class="produto-link">Ver página &#8250;</span></div>
+          </a>
+          <a class="produto" href="/mentoria-ao-vivo" data-cta="produto_mentoria_599" onclick="trackCTA('produto_mentoria_599')">
+            <p class="produto-tipo">Ao vivo</p>
+            <h4>Mentoria ao vivo</h4>
+            <p>Acompanhamento ao vivo para trabalhar a sua operação junto com quem já aplicou o método em centenas de lojas.</p>
+            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$742,44 em 12x</span><small>R$</small>599<span class="produto-avista">à vista</span></span><span class="produto-link">Ver página &#8250;</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="trilha">
+        <h3 class="trilha-titulo">Para quem quer uma renda extra como gestor de delivery <span>Caminho 2</span></h3>
+        <p class="trilha-lead">Você não precisa ter um restaurante para trabalhar com delivery. Os restaurantes precisam de quem saiba fazer essa gestão, e essa é hoje uma das portas de entrada mais acessíveis para uma renda extra dentro do digital: você aprende o método e passa a prestar o serviço para as lojas da sua região.</p>
+        <div class="renda-extra">
+          <div class="renda-item"><strong>Sem ter restaurante</strong><span>Você trabalha na operação dos outros. Não precisa de ponto, cozinha, estoque nem funcionário.</span></div>
+          <div class="renda-item"><strong>Sem largar o que você faz</strong><span>Dá para começar atendendo poucas lojas, no seu tempo, e ir aumentando conforme a agenda permitir.</span></div>
+          <div class="renda-item"><strong>De onde você estiver</strong><span>A gestão acontece dentro dos aplicativos, então o trabalho é remoto e não depende da sua cidade.</span></div>
+        </div>
+        <div class="produtos-grid">
+          <a class="produto" href="/formacaogestores" data-cta="produto_formacao_297" onclick="trackCTA('produto_formacao_297')">
+            <p class="produto-tipo">Formação completa</p>
+            <h4>Formação Gestor de Delivery</h4>
+            <p>O método completo para gerir lojas no iFood, 99 e Keeta e transformar isso em uma nova fonte de renda, com uma avenida adicional como vendedor externo.</p>
+            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$368,16 em 12x</span><small>R$</small>297<span class="produto-avista">à vista</span></span><span class="produto-link">Ver página &#8250;</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="provas">
+    <div class="wrap">
+      <div class="eyebrow">Quem já aplicou</div>
+      <h2 class="section-title">Depoimentos e resultados</h2>
+      <div class="depoimentos-grid">
+        <div class="depoimento-card">
+          <video controls playsinline preload="none" poster="/static/media/poster-video-01.webp">
+            <source src="/static/media/depoimento-video-01.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo embutido.
+          </video>
+        </div>
+        <div class="depoimento-card">
+          <video controls playsinline preload="none" poster="/static/media/poster-video-03.webp">
+            <source src="/static/media/depoimento-video-03.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo embutido.
+          </video>
+        </div>
+        <div class="depoimento-card">
+          <video controls playsinline preload="none" poster="/static/media/poster-video-04.webp">
+            <source src="/static/media/depoimento-video-04.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo embutido.
+          </video>
+        </div>
+      </div>
+      <div class="provas-grid">
+        <div class="prova-card"><img src="/static/img/resultado-01.webp" alt="Registro de resultado de restaurante atendido pela Delivery Elite" loading="lazy"></div>
+        <div class="prova-card"><img src="/static/img/resultado-02.webp" alt="Registro de resultado de restaurante atendido pela Delivery Elite" loading="lazy"></div>
+        <div class="prova-card"><img src="/static/img/resultado-03.webp" alt="Registro de resultado de restaurante atendido pela Delivery Elite" loading="lazy"></div>
+      </div>
+      <p class="provas-nota">Resultados de operações específicas. Não representam promessa de faturamento para quem contrata os produtos.</p>
+    </div>
+  </section>
+
+  <section class="fechamento">
+    <div class="wrap">
+      <h2>Comece pelo ponto que faz sentido para a sua situação hoje</h2>
+      <p>Se você tem loja, o caminho começa no cardápio. Se você quer uma nova fonte de renda, começa pela formação.</p>
+      <a href="#produtos" class="btn btn--light" data-cta="fechamento" onclick="trackCTA('fechamento')">Ver os produtos &#8250;</a>
+    </div>
+  </section>
+
+  <footer>
+    Delivery Elite &bull; Eric Rodrigues Rosa<br>
+    Produto independente. Esta página não representa o iFood, a 99 ou a Keeta.<br>
+    Todos os direitos reservados &copy; 2026
+  </footer>
+</body>
+</html>
