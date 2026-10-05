@@ -431,5 +431,27 @@
       };
     }());
   </script>
+<script>
+  /* Repassa as UTMs capturadas pelo tracking.js para todo link de checkout. */
+  (function () {
+    var CHECKOUT = /pay\.cakto\.com\.br|pay\.hotmart\.com|go\.hotmart\.com/;
+    function decorateAll() {
+      if (!window.DE || !window.DE.decorate) return;
+      document.querySelectorAll("a[href]").forEach(function (a) {
+        var href = a.getAttribute("href");
+        if (CHECKOUT.test(href)) a.href = window.DE.decorate(href);
+      });
+    }
+    decorateAll();
+    /* Garante a UTM mesmo se o link mudar depois do carregamento. */
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (a && CHECKOUT.test(a.href) && window.DE && window.DE.decorate) {
+        a.href = window.DE.decorate(a.href);
+      }
+    }, true);
+  })();
+</script>
+
 </body>
 </html>
