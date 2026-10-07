@@ -982,6 +982,88 @@
       font-size: 1.08em;
     }
 
+    /* ============ DEPOIMENTOS EM AUDIO E VIDEO ============ */
+    .testi-audio {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 18px;
+      max-width: 640px;
+      margin: clamp(40px, 5vw, 58px) auto 0;
+      padding: 20px 22px;
+      border: 1px solid var(--line-strong);
+      border-radius: 18px;
+      background:
+        linear-gradient(150deg, rgba(255, 59, 66, 0.12), rgba(255, 59, 66, 0.02) 60%),
+        var(--ink-3);
+    }
+
+    .testi-audio-ico {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(140deg, var(--red-bright), var(--red-deep));
+      box-shadow: 0 10px 24px rgba(255, 59, 66, 0.3);
+    }
+
+    .testi-audio-ico svg {
+      width: 22px;
+      height: 22px;
+      fill: #ffffff;
+    }
+
+    .testi-audio h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .testi-audio p {
+      margin-top: 2px;
+      color: var(--text-soft);
+      font-size: 0.86rem;
+    }
+
+    .testi-audio audio {
+      grid-column: 1 / -1;
+      width: 100%;
+      height: 44px;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 940px;
+      margin: 22px auto 0;
+    }
+
+    .testi-video {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #000;
+      box-shadow: 0 24px 54px rgba(0, 0, 0, 0.45);
+      transition: border-color 380ms ease, transform 420ms var(--ease);
+    }
+
+    .testi-video:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-4px);
+    }
+
+    .testi-video video {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      background: #000;
+    }
+
     /* ============ CARROSSEL DE PROVAS ============ */
     .proof-strip {
       --fade: clamp(36px, 9vw, 160px);
@@ -1197,6 +1279,16 @@
       .card {
         padding: 23px 21px;
         gap: 14px;
+      }
+
+      /* Videos verticais empilhados: um por vez ocupa a tela do celular */
+      .testi-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+      }
+
+      .testi-video:hover {
+        transform: none;
       }
 
       .cta {
@@ -1421,16 +1513,71 @@
       </div>
     </section>
 
-    <!-- ===== PROVAS / DEPOIMENTOS ===== -->
-    <section class="section" id="depoimentos" aria-labelledby="depoimentos-title">
+    <!-- ===== DEPOIMENTOS EM AUDIO E VIDEO ===== -->
+    <section class="section" id="depoimentos-video" aria-labelledby="depoimentos-video-title">
       <div class="container">
         <div class="section-head reveal">
-          <span class="section-tag">Provas</span>
+          <span class="section-tag">Depoimentos</span>
+          <h2 id="depoimentos-video-title">
+            Veja quem já aplicou o método e <em>colheu resultado</em>
+          </h2>
+          <p class="section-lead">
+            Antes de decidir, ouça direto de quem já colocou o método em prática.
+          </p>
+        </div>
+
+        <div class="testi-audio reveal">
+          <span class="testi-audio-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 15a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v7a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2z" />
+            </svg>
+          </span>
+          <div>
+            <h3>Depoimento em áudio</h3>
+            <p>Direto de quem aplicou o método na própria operação.</p>
+          </div>
+          <audio class="js-testi" controls preload="none" controlslist="nodownload" data-label="audio_01">
+            <source src="https://lp.deliveryelite.com.br/static/media/depoimento-audio-01.mp4" type="audio/mp4">
+            Seu navegador não suporta áudio embutido.
+          </audio>
+        </div>
+
+        <div class="testi-grid">
+          <div class="testi-video reveal">
+            <video class="js-testi" controls playsinline preload="none" controlslist="nodownload" data-label="video_01"
+              poster="https://lp.deliveryelite.com.br/static/media/poster-video-01.webp">
+              <source src="https://lp.deliveryelite.com.br/static/media/depoimento-video-01.mp4" type="video/mp4">
+              Seu navegador não suporta vídeo embutido.
+            </video>
+          </div>
+          <div class="testi-video reveal">
+            <video class="js-testi" controls playsinline preload="none" controlslist="nodownload" data-label="video_03"
+              poster="https://lp.deliveryelite.com.br/static/media/poster-video-03.webp">
+              <source src="https://lp.deliveryelite.com.br/static/media/depoimento-video-03.mp4" type="video/mp4">
+              Seu navegador não suporta vídeo embutido.
+            </video>
+          </div>
+          <div class="testi-video reveal">
+            <video class="js-testi" controls playsinline preload="none" controlslist="nodownload" data-label="video_04"
+              poster="https://lp.deliveryelite.com.br/static/media/poster-video-04.webp">
+              <source src="https://lp.deliveryelite.com.br/static/media/depoimento-video-04.mp4" type="video/mp4">
+              Seu navegador não suporta vídeo embutido.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DEPOIMENTOS ESCRITOS (PRINTS) ===== -->
+    <section class="section section-raised" id="depoimentos" aria-labelledby="depoimentos-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">Na palavra dos alunos</span>
           <h2 id="depoimentos-title">
             Resultados de quem <em>já aplica o método</em>
           </h2>
           <p class="section-lead">
-            Prints de conversas e painéis de operações acompanhadas pela Delivery Elite.
+            Mensagens de mentorados e painéis de operações acompanhadas pela Delivery Elite.
           </p>
         </div>
       </div>
@@ -1666,6 +1813,27 @@
 
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape" && !box.hidden) close();
+      });
+    })();
+
+    /* Depoimentos: um toca por vez (pausa a VSL e os outros) e cada play vai pro GTM */
+    (function () {
+      "use strict";
+
+      var medias = [].slice.call(document.querySelectorAll(".js-testi"));
+      var vsl = document.getElementById("vsl");
+      var all = vsl ? medias.concat([vsl]) : medias;
+
+      all.forEach(function (media) {
+        media.addEventListener("play", function () {
+          all.forEach(function (other) {
+            if (other !== media && !other.paused) other.pause();
+          });
+          var label = media.getAttribute("data-label");
+          if (label && window.DE && window.DE.track) {
+            window.DE.track("testimonial_play", { testimonial: label });
+          }
+        });
       });
     })();
 
