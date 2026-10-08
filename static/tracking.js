@@ -66,6 +66,13 @@
       Object.keys(utms).forEach(function (key) {
         if (!target.searchParams.has(key)) target.searchParams.set(key, utms[key]);
       });
+      /* Hotmart so mostra a origem venda a venda (relatorio e webhook) pelo
+         sck, entao a campanha e o anuncio viajam juntos nele tambem. */
+      if (/(^|\.)hotmart\.com$/.test(target.hostname) && !target.searchParams.has("sck")) {
+        var sck = [utms.utm_source, utms.utm_campaign, utms.utm_content]
+          .filter(Boolean).join("__"); /* "|" ja aparece nos nomes de campanha */
+        if (sck) target.searchParams.set("sck", sck.slice(0, 250));
+      }
       return target.toString();
     } catch (err) {
       return url;
