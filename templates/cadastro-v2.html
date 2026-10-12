@@ -2,6 +2,28 @@
 <html lang="pt-BR">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- Meta Pixel Code (direto no head: carrega antes do GTM).
+       No GTM, a tag do Pixel em gtm.js tem exceção pra /cadastro-v2, pra não duplicar o PageView. -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1614612872757005');
+    fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
+
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({
@@ -13,14 +35,33 @@
     })(window, document, 'script', 'dataLayer', 'GTM-WG68M2TS');</script>
   <!-- End Google Tag Manager -->
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Gestão iFood — Cadastro V2</title>
   <meta name="robots" content="noindex,nofollow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://connect.facebook.net">
+  <link rel="preload" href="https://fonts.gstatic.com/s/abeezee/v23/esDR31xSG-6AGleN2tWkkJUEGpA.woff2" as="font"
+    type="font/woff2" crossorigin>
   <style>
+    /* ABeeZee embutida (sem a folha do Google Fonts, que bloqueava a primeira pintura).
+       swap: o texto aparece na hora com a fonte do sistema e troca quando a ABeeZee chega. */
+    @font-face {
+      font-family: 'ABeeZee';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/abeezee/v23/esDR31xSG-6AGleN2tukkJUEGpCeGQ.woff2) format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    @font-face {
+      font-family: 'ABeeZee';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/abeezee/v23/esDR31xSG-6AGleN2tWkkJUEGpA.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
     :root {
       --red: #d7192b;
       --red-dark: #b81222;
@@ -165,34 +206,27 @@
       margin: 12px 0 0;
     }
 
-    .benefits {
-      margin-top: 14px;
-      font-size: 15px;
+    .perks {
+      list-style: none;
+      margin: 14px 0 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
     }
 
-    .benefits summary {
-      color: var(--red);
-      cursor: pointer;
-      min-height: 44px;
+    .perks li {
       display: flex;
-      align-items: center;
       gap: 8px;
-      width: fit-content;
-      border-radius: 4px;
     }
 
-    .benefits summary::after {
-      content: '+';
-      font-size: 20px;
-      line-height: 1;
+    .perks li+li {
+      margin-top: 5px;
     }
 
-    .benefits[open] summary::after {
-      content: '−';
-    }
-
-    .benefits summary::-webkit-details-marker {
-      display: none;
+    .perks span {
+      flex: none;
+      width: 1.35em;
+      text-align: center;
     }
 
     .bullets {
@@ -433,8 +467,8 @@
 
     @media(max-width:640px) {
       .site-header {
-        padding: 20px 20px 0;
-        padding-top: max(20px, env(safe-area-inset-top));
+        padding: 14px 20px 0;
+        padding-top: max(14px, env(safe-area-inset-top));
       }
 
       .header-note {
@@ -442,38 +476,45 @@
       }
 
       #progress-track {
-        margin: 16px 20px 0;
+        margin: 12px 20px 0;
       }
 
       .step {
-        padding: 22px 20px 8px;
+        padding: 16px 20px 8px;
       }
 
       .step-count {
-        margin-bottom: 20px;
+        margin-bottom: 14px;
       }
 
       .headline {
-        font-size: clamp(24px, 6.9vw, 29px);
+        font-size: clamp(23px, 6.4vw, 28px);
         line-height: 1.24;
       }
 
       .intro {
-        margin-bottom: 22px;
+        margin-bottom: 16px;
       }
 
       .intro-note {
-        font-size: 14px;
-        line-height: 1.5;
+        font-size: 13px;
+        line-height: 1.4;
+        margin-top: 8px;
       }
 
       .intro .eyebrow {
         font-size: 14px;
+        margin-bottom: 4px;
       }
 
-      .benefits {
-        margin-top: 6px;
-        font-size: 14px;
+      .perks {
+        margin-top: 10px;
+        font-size: 14.5px;
+        line-height: 1.35;
+      }
+
+      .perks li+li {
+        margin-top: 3px;
       }
 
       .question-title {
@@ -483,6 +524,7 @@
 
       .intro+.question-title {
         font-size: 21px;
+        margin-bottom: 10px;
       }
 
       .question-help {
@@ -519,6 +561,32 @@
       }
     }
 
+    /* Celular com pouca altura útil (navegador do Instagram/Facebook em telas menores):
+       aperta o topo e os bullets pra o campo de nome + Continuar seguirem sem rolar. */
+    @media(max-height:600px) and (max-width:640px) {
+      .step-count {
+        margin-bottom: 10px;
+      }
+
+      .headline {
+        font-size: clamp(21px, 6vw, 24px);
+      }
+
+      .perks {
+        margin-top: 8px;
+        font-size: 13.5px;
+        line-height: 1.3;
+      }
+
+      .perks li+li {
+        margin-top: 2px;
+      }
+
+      .intro {
+        margin-bottom: 12px;
+      }
+    }
+
     @media(max-height:500px) and (max-width:640px) {
       .site-header {
         padding-top: 12px;
@@ -539,6 +607,10 @@
 </head>
 
 <body>
+  <!-- Meta Pixel Code (noscript) -->
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1614612872757005&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code (noscript) -->
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG68M2TS" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
@@ -578,7 +650,7 @@
         "question": "Como podemos te chamar?",
         "placeholder": "Seu nome",
         "required": true,
-        "intro": "<p class=\"eyebrow\">Muito prazer, sou o Éric.</p><div class=\"headline\">Vamos transformar sua loja no iFood em uma <b>máquina de vendas.</b></div><p class=\"intro-note\">Para empresários que já têm uma loja no iFood.</p><details class=\"benefits\"><summary>Como podemos ajudar</summary><div class=\"bullets\"><div>🧠 Fazer o algoritmo trabalhar a seu favor.</div><div>🚀 Ampliar suas visualizações.</div><div>📝 Criar um cardápio lucrativo.</div><div>💰 Ajudar sua loja a faturar mais.</div></div></details>"
+        "intro": "<p class=\"eyebrow\">Muito prazer, sou o Éric.</p><div class=\"headline\">Vamos transformar sua loja no iFood em uma <b>máquina de vendas.</b></div><ul class=\"perks\"><li><span aria-hidden=\"true\">🧠</span>Fazer o algoritmo do iFood trabalhar a seu favor</li><li><span aria-hidden=\"true\">🚀</span>Ampliar as visualizações da sua loja</li><li><span aria-hidden=\"true\">📝</span>Criar um cardápio lucrativo</li><li><span aria-hidden=\"true\">💰</span>Fazer sua loja faturar mais</li></ul><p class=\"intro-note\">Exclusivo para empresários que vendem no iFood</p>"
       },
       {
         "type": "phone",
