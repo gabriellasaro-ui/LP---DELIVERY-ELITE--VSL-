@@ -126,6 +126,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   footer { padding:36px 0; background:var(--red-deep); color:#ffd4d8; font-size:12px; text-align:center; line-height:1.7; }
 
+  /* gestao: bloco aberto a todos, com o formulario de qualificacao (pedido do Eric em 13/10) */
+  .gestao { padding:90px 0; background:var(--red-deep); color:#fff; }
+  .gestao-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(30px,5vw,70px); align-items:center; }
+  .gestao .eyebrow { color:#ff9ba5; }
+  .gestao .section-title { color:#fff; }
+  .gestao .section-lead { color:#ffd4d8; }
+  .nichos { display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 0; padding:0; list-style:none; }
+  .nichos li { padding:9px 16px; border:1px solid rgba(255,255,255,.3); border-radius:99px; font-size:14px; font-weight:600; color:#ffe9eb; }
+  .gestao-card { padding:32px; border-radius:22px; background:#fff; color:var(--ink); box-shadow:0 30px 70px rgba(0,0,0,.25); }
+  .gestao-card h3 { margin:0 0 10px; font-family:'Space Grotesk',Arial,sans-serif; font-size:24px; letter-spacing:-.03em; }
+  .gestao-card p { margin:0 0 22px; color:var(--muted); font-size:15px; line-height:1.6; }
+  .gestao-card .btn { width:100%; }
+  .gestao-card .ou { display:block; margin:16px 0 0; text-align:center; color:var(--muted); font-size:14px; }
+  .gestao-card .ou a { color:var(--red); font-weight:700; }
+
+  /* garantia: faixa unica valendo para todos os produtos */
+  .garantia-faixa { display:flex; align-items:center; gap:18px; max-width:760px; margin:54px auto 0; padding:20px 24px; border:1px solid var(--line); border-radius:18px; background:#fff; box-shadow:0 12px 30px rgba(65,0,11,.06); }
+  .garantia-faixa .selo { flex:0 0 auto; display:grid; place-items:center; width:64px; height:64px; border-radius:50%; background:radial-gradient(circle at 30% 30%,#ff6a6f,#e00a10 55%,#7a0205); color:#fff; font-family:'Space Grotesk',Arial,sans-serif; font-weight:700; line-height:1; text-align:center; }
+  .garantia-faixa .selo b { display:block; font-size:24px; }
+  .garantia-faixa .selo small { font-size:9px; letter-spacing:.14em; }
+  .garantia-faixa strong { display:block; font-family:'Space Grotesk',Arial,sans-serif; font-size:18px; letter-spacing:-.02em; }
+  .garantia-faixa span { color:var(--muted); font-size:14px; line-height:1.5; }
+
+  /* whatsapp: botao flutuante + balao que aparece depois de alguns segundos */
+  .wa-float { position:fixed; right:18px; bottom:18px; z-index:50; display:flex; flex-direction:column; align-items:flex-end; gap:10px; }
+  .wa-balao { position:relative; max-width:260px; padding:14px 34px 14px 16px; border-radius:16px; background:#fff; color:var(--ink); font-size:14px; line-height:1.45; box-shadow:0 16px 40px rgba(0,0,0,.18); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity .3s ease, transform .3s ease; }
+  .wa-balao.on { opacity:1; transform:none; pointer-events:auto; }
+  .wa-balao b { display:block; margin-bottom:2px; }
+  .wa-balao a { color:#128c4b; font-weight:700; text-decoration:none; }
+  .wa-fechar { position:absolute; top:6px; right:8px; border:0; background:none; color:var(--muted); font-size:18px; line-height:1; cursor:pointer; }
+  .wa-btn { display:grid; place-items:center; width:60px; height:60px; border-radius:50%; background:#25d366; color:#fff; box-shadow:0 12px 30px rgba(37,211,102,.4); transition:transform .2s ease; }
+  .wa-btn:hover { transform:scale(1.06); }
+  .wa-btn svg { width:32px; height:32px; }
+  @media (max-width:760px) {
+    .gestao-grid { grid-template-columns:1fr; }
+    .garantia-faixa { flex-direction:column; text-align:center; }
+    .wa-balao { max-width:220px; }
+  }
+
   @media (max-width:980px) {
     .metodo-grid { grid-template-columns:repeat(2,1fr); }
     .produtos-grid { grid-template-columns:repeat(2,1fr); }
@@ -153,10 +192,85 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <h1>Gestão de delivery aplicada em mais de <span>500 restaurantes</span></h1>
       <p>A Delivery Elite trabalha cardápio, fotos, palavras chave e anúncios dentro do iFood, 99 e Keeta. Conheça o método, quem está por trás e por onde você pode começar.</p>
       <a href="#produtos" class="btn btn--light" data-cta="hero" onclick="trackCTA('hero')">Conhecer os produtos &#8250;</a>
+      <a href="#gestao" class="btn" style="margin-left:8px;background:transparent;border-color:rgba(255,255,255,.5);box-shadow:none" data-cta="hero_gestao" onclick="trackCTA('hero_gestao')">Quero gestão para minha loja</a>
     </div>
     <div class="hero-marquee">
       <div class="hero-marquee-track">
         <span>MAIS DE 500 RESTAURANTES ATENDIDOS</span><span>IFOOD, 99 E KEETA</span><span>MÉTODO VALIDADO NA PRÁTICA</span><span>MAIS DE 500 RESTAURANTES ATENDIDOS</span><span>IFOOD, 99 E KEETA</span><span>MÉTODO VALIDADO NA PRÁTICA</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="produtos" id="produtos">
+    <div class="wrap">
+      <div class="produtos-head">
+        <div class="eyebrow">Por onde começar</div>
+        <h2 class="section-title">Dois caminhos, dependendo de <em>onde você está</em></h2>
+        <p class="section-lead">Você já tem uma loja no delivery e quer vender mais, ou quer usar esse conhecimento como uma nova fonte de renda. Cada caminho tem um ponto de entrada diferente.</p>
+      </div>
+
+      <div class="trilha">
+        <h3 class="trilha-titulo">Para quem tem loja no delivery <span>Caminho 1</span></h3>
+        <p class="trilha-lead">Do material de entrada ao acompanhamento ao vivo, conforme o quanto você quer de proximidade.</p>
+        <div class="produtos-grid">
+          <a class="produto" href="/mvp-curso-ifood-47" data-cta="produto_curso_47" onclick="trackCTA('produto_curso_47')">
+            <p class="produto-tipo">Curso + ebook</p>
+            <h4>Curso iFood e ebook com 50 dicas</h4>
+            <p>Aula prática de criação de cardápio mais um ebook com 50 dicas de SEO, atendimento e gestão de avaliações. O ponto de entrada mais direto.</p>
+            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$97</span><small>R$</small>47</span><span class="produto-link">Ver página &#8250;</span></div>
+          </a>
+          <a class="produto" href="/analise-de-loja-gravada" data-cta="produto_analise_297" onclick="trackCTA('produto_analise_297')">
+            <p class="produto-tipo">Diagnóstico</p>
+            <h4>Análise gravada da sua loja</h4>
+            <p>Uma análise gravada e personalizada da sua loja no iFood, com diagnóstico do que está travando as vendas e um plano prático do que ajustar.</p>
+            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$368,64 em 12x</span><small>R$</small>297<span class="produto-avista">à vista</span></span><span class="produto-link">Ver página &#8250;</span></div>
+          </a>
+          <a class="produto" href="/mentoria-ao-vivo" data-cta="produto_mentoria_599" onclick="trackCTA('produto_mentoria_599')">
+            <p class="produto-tipo">Ao vivo</p>
+            <h4>Mentoria ao vivo</h4>
+            <p>Acompanhamento ao vivo para trabalhar a sua operação junto com quem já aplicou o método em centenas de lojas.</p>
+            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$740,88 em 12x</span><small>R$</small>597<span class="produto-avista">à vista</span></span><span class="produto-link">Ver página &#8250;</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="trilha">
+        <h3 class="trilha-titulo">Para quem quer uma renda extra como gestor de delivery <span>Caminho 2</span></h3>
+        <p class="trilha-lead">Você não precisa ter um restaurante para trabalhar com delivery. Os restaurantes precisam de quem saiba fazer essa gestão, e essa é hoje uma das portas de entrada mais acessíveis para uma renda extra dentro do digital: você aprende o método e passa a prestar o serviço para as lojas da sua região.</p>
+        <div class="renda-extra">
+          <div class="renda-item"><strong>Sem ter restaurante</strong><span>Você trabalha na operação dos outros. Não precisa de ponto, cozinha, estoque nem funcionário.</span></div>
+          <div class="renda-item"><strong>Sem largar o que você faz</strong><span>Dá para começar atendendo poucas lojas, no seu tempo, e ir aumentando conforme a agenda permitir.</span></div>
+          <div class="renda-item"><strong>De onde você estiver</strong><span>A gestão acontece dentro dos aplicativos, então o trabalho é remoto e não depende da sua cidade.</span></div>
+        </div>
+        <div class="produtos-grid">
+          <a class="produto" href="/formacaogestores" data-cta="produto_formacao_297" onclick="trackCTA('produto_formacao_297')">
+            <p class="produto-tipo">Formação completa</p>
+            <h4>Formação Gestor de Delivery</h4>
+            <p>O método completo para gerir lojas no iFood, 99 e Keeta e transformar isso em uma nova fonte de renda, com uma avenida adicional como vendedor externo.</p>
+            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$368,64 em 12x</span><small>R$</small>297<span class="produto-avista">à vista</span></span><span class="produto-link">Ver página &#8250;</span></div>
+          </a>
+        </div>
+      </div>
+      <div class="garantia-faixa">
+        <div class="selo"><div><b>7</b><small>DIAS</small></div></div>
+        <div><strong>Todos os produtos com 7 dias de garantia</strong><span>Se não for para você, é só pedir o reembolso em até 7 dias e devolvemos 100% do valor pago. Sem burocracia.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gestao" id="gestao">
+    <div class="wrap gestao-grid">
+      <div>
+        <div class="eyebrow">Gestão da sua loja</div>
+        <h2 class="section-title">Vende no iFood, 99 ou Keeta e o resultado <em style="color:#ffbdc3">não vem</em>?</h2>
+        <p class="section-lead">A equipe da Delivery Elite faz a gestão da sua loja dentro dos aplicativos: cardápio, preço, visibilidade nas buscas e recompra. Somos especialistas em operações de delivery de vários segmentos.</p>
+        <ul class="nichos"><li>Restaurante</li><li>Farmácia</li><li>Mercado</li><li>Lanchonete</li><li>Pizzaria</li><li>Açaí</li></ul>
+      </div>
+      <div class="gestao-card">
+        <h3>Se qualifique para a gestão</h3>
+        <p>Responda algumas perguntas rápidas sobre a sua loja. A equipe analisa e entra em contato com você pelo WhatsApp.</p>
+        <a class="btn" href="/cadastro-v2?utm_source=site&amp;utm_medium=produtos&amp;utm_campaign=qualificacao-gestao" data-cta="qualificacao_gestao" onclick="trackCTA('qualificacao_gestao')">Quero me qualificar &#8250;</a>
+        <span class="ou">ou <a href="https://wa.me/551936287413?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20da%20Delivery%20Elite%20e%20quero%20falar%20com%20a%20equipe." target="_blank" rel="noopener" data-cta="whatsapp_gestao" onclick="trackCTA('whatsapp_gestao')">fale direto com a equipe no WhatsApp</a></span>
       </div>
     </div>
   </section>
@@ -190,59 +304,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="metodo-item"><strong>Preço</strong><p>Precificação trabalhada com atenção à margem e à decisão de compra, não no chute.</p></div>
         <div class="metodo-item"><strong>Visibilidade</strong><p>Palavras chave, posicionamento e algoritmo, para a loja aparecer nas buscas dentro do app.</p></div>
         <div class="metodo-item"><strong>Recompra</strong><p>Estratégias para transformar quem pediu uma vez em cliente que volta.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="produtos" id="produtos">
-    <div class="wrap">
-      <div class="produtos-head">
-        <div class="eyebrow">Por onde começar</div>
-        <h2 class="section-title">Dois caminhos, dependendo de <em>onde você está</em></h2>
-        <p class="section-lead">Você já tem uma loja no delivery e quer vender mais, ou quer usar esse conhecimento como uma nova fonte de renda. Cada caminho tem um ponto de entrada diferente.</p>
-      </div>
-
-      <div class="trilha">
-        <h3 class="trilha-titulo">Para quem tem loja no delivery <span>Caminho 1</span></h3>
-        <p class="trilha-lead">Do material de entrada ao acompanhamento ao vivo, conforme o quanto você quer de proximidade.</p>
-        <div class="produtos-grid">
-          <a class="produto" href="/mvp-curso-ifood-47" data-cta="produto_curso_47" onclick="trackCTA('produto_curso_47')">
-            <p class="produto-tipo">Curso + ebook</p>
-            <h4>Curso iFood e ebook com 50 dicas</h4>
-            <p>Aula prática de criação de cardápio mais um ebook com 50 dicas de SEO, atendimento e gestão de avaliações. O ponto de entrada mais direto.</p>
-            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$97</span><small>R$</small>47</span><span class="produto-link">Ver página &#8250;</span></div>
-          </a>
-          <a class="produto" href="/analise-de-loja-gravada" data-cta="produto_analise_297" onclick="trackCTA('produto_analise_297')">
-            <p class="produto-tipo">Diagnóstico</p>
-            <h4>Análise gravada da sua loja</h4>
-            <p>Uma análise gravada e personalizada da sua loja no iFood, com diagnóstico do que está travando as vendas e um plano prático do que ajustar.</p>
-            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$368,16 em 12x</span><small>R$</small>297<span class="produto-avista">à vista</span></span><span class="produto-link">Ver página &#8250;</span></div>
-          </a>
-          <a class="produto" href="/mentoria-ao-vivo" data-cta="produto_mentoria_599" onclick="trackCTA('produto_mentoria_599')">
-            <p class="produto-tipo">Ao vivo</p>
-            <h4>Mentoria ao vivo</h4>
-            <p>Acompanhamento ao vivo para trabalhar a sua operação junto com quem já aplicou o método em centenas de lojas.</p>
-            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$616,80 em 12x</span><small>R$</small>497<span class="produto-avista">à vista</span></span><span class="produto-link">Ver página &#8250;</span></div>
-          </a>
-        </div>
-      </div>
-
-      <div class="trilha">
-        <h3 class="trilha-titulo">Para quem quer uma renda extra como gestor de delivery <span>Caminho 2</span></h3>
-        <p class="trilha-lead">Você não precisa ter um restaurante para trabalhar com delivery. Os restaurantes precisam de quem saiba fazer essa gestão, e essa é hoje uma das portas de entrada mais acessíveis para uma renda extra dentro do digital: você aprende o método e passa a prestar o serviço para as lojas da sua região.</p>
-        <div class="renda-extra">
-          <div class="renda-item"><strong>Sem ter restaurante</strong><span>Você trabalha na operação dos outros. Não precisa de ponto, cozinha, estoque nem funcionário.</span></div>
-          <div class="renda-item"><strong>Sem largar o que você faz</strong><span>Dá para começar atendendo poucas lojas, no seu tempo, e ir aumentando conforme a agenda permitir.</span></div>
-          <div class="renda-item"><strong>De onde você estiver</strong><span>A gestão acontece dentro dos aplicativos, então o trabalho é remoto e não depende da sua cidade.</span></div>
-        </div>
-        <div class="produtos-grid">
-          <a class="produto" href="/formacaogestores" data-cta="produto_formacao_297" onclick="trackCTA('produto_formacao_297')">
-            <p class="produto-tipo">Formação completa</p>
-            <h4>Formação Gestor de Delivery</h4>
-            <p>O método completo para gerir lojas no iFood, 99 e Keeta e transformar isso em uma nova fonte de renda, com uma avenida adicional como vendedor externo.</p>
-            <div class="produto-rodape"><span class="produto-preco"><span class="produto-antes">R$368,16 em 12x</span><small>R$</small>297<span class="produto-avista">à vista</span></span><span class="produto-link">Ver página &#8250;</span></div>
-          </a>
-        </div>
       </div>
     </div>
   </section>
@@ -293,5 +354,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     Produto independente. Esta página não representa o iFood, a 99 ou a Keeta.<br>
     Todos os direitos reservados &copy; 2026
   </footer>
+
+  <div class="wa-float">
+    <div class="wa-balao" id="wa-balao" role="dialog" aria-label="Fale com a equipe">
+      <button class="wa-fechar" type="button" aria-label="Fechar" onclick="fecharWa()">&times;</button>
+      <b>Ficou com dúvida?</b>A equipe da Delivery Elite te ajuda a escolher o melhor caminho. <a href="https://wa.me/551936287413?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20da%20Delivery%20Elite%20e%20quero%20falar%20com%20a%20equipe." target="_blank" rel="noopener" data-cta="whatsapp_popup" onclick="trackCTA('whatsapp_popup')">Chamar no WhatsApp &#8250;</a>
+    </div>
+    <a class="wa-btn" href="https://wa.me/551936287413?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20da%20Delivery%20Elite%20e%20quero%20falar%20com%20a%20equipe." target="_blank" rel="noopener" aria-label="Falar no WhatsApp" data-cta="whatsapp_botao" onclick="trackCTA('whatsapp_botao')"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.6l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.1-1.8-1.7-3.8-1.7-5.8C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.4 16 26.4zm6-7.9c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.7-1.6-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6l-1.1-2.6c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.6.2 2.2.1.7-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.6-.4z"/></svg></a>
+  </div>
+  <script>
+    // Balão do WhatsApp: aparece depois de 8s, uma vez por visita; fechar esconde.
+    (function () {
+      var b = document.getElementById('wa-balao');
+      var fechado = false;
+      try { fechado = sessionStorage.getItem('wa_fechado') === '1'; } catch (e) {}
+      if (!fechado) setTimeout(function () { b.classList.add('on'); }, 8000);
+      window.fecharWa = function () {
+        b.classList.remove('on');
+        try { sessionStorage.setItem('wa_fechado', '1'); } catch (e) {}
+      };
+    })();
+  </script>
 </body>
 </html>
