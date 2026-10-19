@@ -149,9 +149,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .garantia-faixa strong { display:block; font-family:'Space Grotesk',Arial,sans-serif; font-size:18px; letter-spacing:-.02em; }
   .garantia-faixa span { color:var(--muted); font-size:14px; line-height:1.5; }
 
+  /* cadastro: botao flutuante + balao que aparece depois de alguns segundos */
+  .cadastro-float { position:fixed; right:18px; bottom:18px; z-index:50; display:flex; flex-direction:column; align-items:flex-end; gap:10px; }
+  .cadastro-balao { position:relative; max-width:260px; padding:14px 34px 14px 16px; border-radius:16px; background:#fff; color:var(--ink); font-size:14px; line-height:1.45; box-shadow:0 16px 40px rgba(0,0,0,.18); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity .3s ease, transform .3s ease; }
+  .cadastro-balao.on { opacity:1; transform:none; pointer-events:auto; }
+  .cadastro-balao b { display:block; margin-bottom:2px; }
+  .cadastro-balao a { color:#128c4b; font-weight:700; text-decoration:none; }
+  .cadastro-fechar { position:absolute; top:6px; right:8px; border:0; background:none; color:var(--muted); font-size:18px; line-height:1; cursor:pointer; }
+  .cadastro-btn { display:grid; place-items:center; width:60px; height:60px; border-radius:50%; background:#25d366; color:#fff; box-shadow:0 12px 30px rgba(37,211,102,.4); transition:transform .2s ease; }
+  .cadastro-btn:hover { transform:scale(1.06); }
+  .cadastro-btn svg { width:32px; height:32px; }
   @media (max-width:760px) {
     .gestao-grid { grid-template-columns:1fr; }
     .garantia-faixa { flex-direction:column; text-align:center; }
+    .cadastro-balao { max-width:220px; }
   }
 
   @media (max-width:980px) {
@@ -267,6 +278,7 @@ hot('account','80ba8e3d-2519-3528-ba76-f34c2f54c1b6');
         <h3>Se qualifique para a gestão</h3>
         <p>Responda algumas perguntas rápidas sobre a sua loja. A equipe analisa seu cadastro e entra em contato com você.</p>
         <a class="btn" href="/cadastro-v2?utm_source=site&amp;utm_medium=produtos&amp;utm_campaign=qualificacao-gestao" data-cta="qualificacao_gestao" onclick="trackCTA('qualificacao_gestao')">Quero me qualificar &#8250;</a>
+        <span class="ou">ou <a href="/cadastro-v2?utm_source=site&amp;utm_medium=produtos&amp;utm_campaign=qualificacao-gestao" data-cta="cadastro_gestao" onclick="trackCTA('cadastro_gestao')">preencha o cadastro para falar com a equipe</a></span>
       </div>
     </div>
   </section>
@@ -351,5 +363,25 @@ hot('account','80ba8e3d-2519-3528-ba76-f34c2f54c1b6');
     Todos os direitos reservados &copy; 2026
   </footer>
 
+  <div class="cadastro-float">
+    <div class="cadastro-balao" id="cadastro-balao" role="dialog" aria-label="Fale com a equipe">
+      <button class="cadastro-fechar" type="button" aria-label="Fechar" onclick="fecharCadastro()">&times;</button>
+      <b>Ficou com dúvida?</b>Preencha o cadastro para a equipe da Delivery Elite entender sua loja e te ajudar. <a href="/cadastro-v2?utm_source=site&amp;utm_medium=produtos&amp;utm_campaign=qualificacao-gestao" data-cta="cadastro_popup" onclick="trackCTA('cadastro_popup')">Preencher cadastro &#8250;</a>
+    </div>
+    <a class="cadastro-btn" href="/cadastro-v2?utm_source=site&amp;utm_medium=produtos&amp;utm_campaign=qualificacao-gestao" aria-label="Preencher cadastro de qualifica??o" data-cta="cadastro_botao" onclick="trackCTA('cadastro_botao')"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="7" y="5" width="18" height="23" rx="3"/><path d="M12 5V3h8v2M11 12h10M11 17h10M11 22h6"/></svg></a>
+  </div>
+  <script>
+    // Balão do cadastro: aparece depois de 8s, uma vez por visita; fechar esconde.
+    (function () {
+      var b = document.getElementById('cadastro-balao');
+      var fechado = false;
+      try { fechado = sessionStorage.getItem('cadastro_fechado') === '1'; } catch (e) {}
+      if (!fechado) setTimeout(function () { b.classList.add('on'); }, 8000);
+      window.fecharCadastro = function () {
+        b.classList.remove('on');
+        try { sessionStorage.setItem('cadastro_fechado', '1'); } catch (e) {}
+      };
+    })();
+  </script>
 </body>
 </html>
